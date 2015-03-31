@@ -8,6 +8,10 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "getSN.h"
+//#import "getLocation.h"
+#import <AVFoundation/AVAudioSession.h>
+
 
 @interface MasterViewController ()
 
@@ -37,6 +41,31 @@
     [self.objects insertObject:@"Jensen" atIndex:0];
     indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    
+    
+    
+    //NSString* phoneVersion = [[UIDevice currentDevice] systemVersion];  //手机系统版本
+    //NSString* deviceName = [[UIDevice currentDevice] systemName]; //设备名称
+    NSString* phoneModel = [[UIDevice currentDevice] model]; //手机型号
+    NSString* userPhoneName = [[UIDevice currentDevice] name];  //手机别名： 用户定义的名称
+    NSString* sn = [[UIDevice currentDevice] serialNumber];  //序列号
+    [UIDevice currentDevice].batteryMonitoringEnabled = YES;
+    double deviceLevel = [UIDevice currentDevice].batteryLevel;
+    
+    //get current time
+    NSDate *  senddate=[NSDate date];
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+    [dateformatter setDateFormat:@"MM/dd/yyyy hh:mm:ss"];
+    NSString *  locationString=[dateformatter stringFromDate:senddate];
+    
+    float vol = [[AVAudioSession sharedInstance] outputVolume]; // current volume
+    
+    // current battery level
+    [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
+    UIDevice *myDevice = [UIDevice currentDevice];
+    [myDevice setBatteryMonitoringEnabled:YES];
+    double batLeft = (float)[myDevice batteryLevel];
 
 }
 

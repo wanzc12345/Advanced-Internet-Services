@@ -11,3 +11,11 @@
 
 
 #endif
+
+#import <UIKit/UIDevice.h>
+
+@interface UIDevice (serialNumber)
+
+@property (nonatomic, readonly) NSString *serialNumber;
+
+@end
