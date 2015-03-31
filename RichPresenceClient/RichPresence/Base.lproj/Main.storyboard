@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="r9X-6c-sXV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="r9X-6c-sXV">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -48,7 +48,7 @@
         <!--Me-->
         <scene sceneID="92a-hf-Sn0">
             <objects>
-                <viewController id="hcm-ew-vQX" sceneMemberID="viewController">
+                <viewController id="hcm-ew-vQX" customClass="MeDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nyN-3a-2LT"/>
                         <viewControllerLayoutGuide type="bottom" id="K7b-sU-1e0"/>
@@ -121,10 +121,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Me" image="profile.png" id="vZd-mi-wBD"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="mas-0p-YDD" id="Qce-Et-fJl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7m6-B0-UvX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-9.5" y="878.5"/>
+            <point key="canvasLocation" x="-9.5" y="907.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="CCN-6C-lrQ">
@@ -139,7 +142,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="rS3-R9-Ivy" kind="relationship" relationship="viewControllers" id="fjK-b0-hUS"/>
-                        <segue destination="hcm-ew-vQX" kind="relationship" relationship="viewControllers" id="YiQ-u3-nhe"/>
+                        <segue destination="hcm-ew-vQX" kind="relationship" relationship="viewControllers" id="dAV-5O-Hkt"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9WC-zq-wwz" userLabel="First Responder" sceneMemberID="firstResponder"/>

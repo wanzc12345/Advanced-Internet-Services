@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE4759711AC8E57B00AD43D9 /* MeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4759701AC8E57B00AD43D9 /* MeDetailViewController.m */; };
 		EE5C1CF51A9B92B3003AFF8D /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = EE5C1CF41A9B92B3003AFF8D /* splash.png */; };
 		EE5C1CF91A9BD923003AFF8D /* Vanamo_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EE5C1CF81A9BD923003AFF8D /* Vanamo_Logo.png */; };
 		EE5C1CFB1A9BDAF2003AFF8D /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = EE5C1CFA1A9BDAF2003AFF8D /* profile.png */; };
@@ -32,6 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EE47596F1AC8E57B00AD43D9 /* MeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeDetailViewController.h; sourceTree = "<group>"; };
+		EE4759701AC8E57B00AD43D9 /* MeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeDetailViewController.m; sourceTree = "<group>"; };
 		EE5C1CF41A9B92B3003AFF8D /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = SOURCE_ROOT; };
 		EE5C1CF81A9BD923003AFF8D /* Vanamo_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Vanamo_Logo.png; sourceTree = SOURCE_ROOT; };
 		EE5C1CFA1A9BDAF2003AFF8D /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = SOURCE_ROOT; };
@@ -102,6 +105,8 @@
 				EE83EE371A9A686C006B3BBF /* Images.xcassets */,
 				EE83EE391A9A686C006B3BBF /* LaunchScreen.xib */,
 				EE83EE271A9A686C006B3BBF /* Supporting Files */,
+				EE47596F1AC8E57B00AD43D9 /* MeDetailViewController.h */,
+				EE4759701AC8E57B00AD43D9 /* MeDetailViewController.m */,
 			);
 			path = RichPresence;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE4759711AC8E57B00AD43D9 /* MeDetailViewController.m in Sources */,
 				EE83EE2D1A9A686C006B3BBF /* AppDelegate.m in Sources */,
 				EE83EE301A9A686C006B3BBF /* MasterViewController.m in Sources */,
 				EE83EE2A1A9A686C006B3BBF /* main.m in Sources */,
