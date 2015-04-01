@@ -10,6 +10,9 @@
 		3F976C951ACA3A9C004573AB /* getSN.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F976C941ACA3A9C004573AB /* getSN.m */; };
 		3F976C981ACA3BE6004573AB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F976C971ACA3BE6004573AB /* CoreLocation.framework */; };
 		3F976C9B1ACA3C13004573AB /* getLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F976C9A1ACA3C13004573AB /* getLocation.m */; };
+		3F976C9D1ACA6393004573AB /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F976C9C1ACA6393004573AB /* CoreMotion.framework */; };
+		3FE8873E1ACB9F4B00BDBCD1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE8873D1ACB9F4B00BDBCD1 /* CoreGraphics.framework */; };
+		3FE887401ACBA0BB00BDBCD1 /* GraphicsServices in Resources */ = {isa = PBXBuildFile; fileRef = 3FE8873F1ACBA0BB00BDBCD1 /* GraphicsServices */; };
 		EE4759711AC8E57B00AD43D9 /* MeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4759701AC8E57B00AD43D9 /* MeDetailViewController.m */; };
 		EE5C1CF51A9B92B3003AFF8D /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = EE5C1CF41A9B92B3003AFF8D /* splash.png */; };
 		EE5C1CF91A9BD923003AFF8D /* Vanamo_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EE5C1CF81A9BD923003AFF8D /* Vanamo_Logo.png */; };
@@ -41,6 +44,9 @@
 		3F976C971ACA3BE6004573AB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3F976C991ACA3C03004573AB /* getLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = getLocation.h; sourceTree = "<group>"; };
 		3F976C9A1ACA3C13004573AB /* getLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getLocation.m; sourceTree = "<group>"; };
+		3F976C9C1ACA6393004573AB /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		3FE8873D1ACB9F4B00BDBCD1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3FE8873F1ACBA0BB00BDBCD1 /* GraphicsServices */ = {isa = PBXFileReference; lastKnownFileType = folder; name = GraphicsServices; path = "../../../Downloads/iphoneheaders-master/GraphicsServices"; sourceTree = "<group>"; };
 		EE47596F1AC8E57B00AD43D9 /* MeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeDetailViewController.h; sourceTree = "<group>"; };
 		EE4759701AC8E57B00AD43D9 /* MeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeDetailViewController.m; sourceTree = "<group>"; };
 		EE5C1CF41A9B92B3003AFF8D /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = SOURCE_ROOT; };
@@ -69,6 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FE8873E1ACB9F4B00BDBCD1 /* CoreGraphics.framework in Frameworks */,
+				3F976C9D1ACA6393004573AB /* CoreMotion.framework in Frameworks */,
 				3F976C981ACA3BE6004573AB /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +94,9 @@
 		EE83EE1B1A9A686C006B3BBF = {
 			isa = PBXGroup;
 			children = (
+				3FE8873F1ACBA0BB00BDBCD1 /* GraphicsServices */,
+				3FE8873D1ACB9F4B00BDBCD1 /* CoreGraphics.framework */,
+				3F976C9C1ACA6393004573AB /* CoreMotion.framework */,
 				3F976C971ACA3BE6004573AB /* CoreLocation.framework */,
 				EE83EE261A9A686C006B3BBF /* RichPresence */,
 				EE83EE431A9A686C006B3BBF /* RichPresenceTests */,
@@ -240,6 +251,7 @@
 				EE83EE361A9A686C006B3BBF /* Main.storyboard in Resources */,
 				EE83EE3B1A9A686C006B3BBF /* LaunchScreen.xib in Resources */,
 				EE5C1CF91A9BD923003AFF8D /* Vanamo_Logo.png in Resources */,
+				3FE887401ACBA0BB00BDBCD1 /* GraphicsServices in Resources */,
 				EE83EE381A9A686C006B3BBF /* Images.xcassets in Resources */,
 				EE5C1CFD1A9BE02B003AFF8D /* me.png in Resources */,
 			);

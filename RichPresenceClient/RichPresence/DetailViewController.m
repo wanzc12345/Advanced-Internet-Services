@@ -9,6 +9,8 @@
 #import "DetailViewController.h"
 #import "getSN.h"
 //#import "getLocation.h"
+//#import "GraphicsServices.h"
+//#import <GraphicsServices/GraphicsServices.h>
 #import <AVFoundation/AVAudioSession.h>
 
 @interface DetailViewController () <CLLocationManagerDelegate>
@@ -17,6 +19,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *BatteryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *VolumeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *LocationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *AccLabel;
+@property (weak, nonatomic) IBOutlet UILabel *BrightnessLabel;
+//@property (weak, nonatomic) IBOutlet UIButton *jsonAnalizer;
 
 @end
 
@@ -28,7 +33,7 @@
 - (void)setDetailItem:(id)newDetailItem {
     if (_detailItem != newDetailItem) {
         _detailItem = newDetailItem;
-            
+        
         // Update the view.
         [self configureView];
         //location
@@ -93,15 +98,51 @@
     self.VolumeLabel.text = volume;
     
     
+    self.motionManager = [[CMMotionManager alloc] init];
+    self.motionManager.accelerometerUpdateInterval = 1;
+    //self.motionManager.delegate = self;
     
+    if ([self.motionManager isAccelerometerAvailable])
+    {
+        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+        [self.motionManager startAccelerometerUpdatesToQueue:queue withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSString *x, *y, *z;
+                x = [NSString stringWithFormat:@"%.2f",accelerometerData.acceleration.x];
+                y = [NSString stringWithFormat:@"%.2f",accelerometerData.acceleration.y];
+                z = [NSString stringWithFormat:@"%.2f",accelerometerData.acceleration.z];
+                self.AccLabel.text = [x stringByAppendingString: y];
+                self.AccLabel.text = [self.AccLabel.text stringByAppendingString: z];
+                
+            });
+        }];
+    } else
+        NSLog(@"not active");
     
+    double br = [[UIScreen mainScreen] brightness];
+    NSString *brs = [NSString stringWithFormat:@"%.2f", br];
+    self.BrightnessLabel.text = brs;
+    //[self.jsonAnalizer addSubview:_jsonAnalizer];
+
 }
 
 
+/*
 
-
-
-
+- (IBAction)jsonAnalizer:(id)sender {
+    
+    NSError *error;
+    //加载一个NSURL对象
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://aisdzt.elasticbeanstalk.com/GetUserInfo?userID=qy2152@columbia.edu"]];
+    //将请求的url数据放到NSData对象中
+    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    //IOS5自带解析类NSJSONSerialization从response中解析出数据放到字典中
+    NSDictionary *Dic = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+    NSDictionary *Info = [Dic objectForKey:@"firstName"];
+    NSLog([NSString stringWithFormat:@"first name: %@, last name: %@, home Address: %@ ",[Info objectForKey:@"firstName"],[Info objectForKey:@"lastName"],[Info objectForKey:@"homeAddress"]]);
+    NSLog(@"weatherInfo字典里面的内容为--》%@", Dic );
+}
+*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

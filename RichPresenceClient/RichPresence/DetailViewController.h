@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <CoreMotion/CoreMotion.h>
 
 @interface DetailViewController : UIViewController <CLLocationManagerDelegate>
 
 @property (strong, nonatomic) id detailItem;
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @property (nonatomic,strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CMMotionManager *motionManager;
+//@property (weak, nonatomic) IBOutlet UIButton *jsonAnalizer;
+//- (IBAction)jsonAnalizer:(id)sender;
 
 @end
