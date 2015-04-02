@@ -18,19 +18,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSString *urlString = [NSString stringWithFormat:@"http://www.google.com"];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:urlString]];
-    [request setHTTPMethod:@"GET"];
-    
-    NSHTTPURLResponse * urlResponse = nil;
-    NSError* error = [[NSError alloc]init];
-    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error: &error];
-    NSMutableString *result = [[NSMutableString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-    
-    NSLog(@"%@",result);
-    
-    self.nameLabel.text = result;
+//    NSString *urlString = [NSString stringWithFormat:@"http://www.google.com"];
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+//    [request setURL:[NSURL URLWithString:urlString]];
+//    [request setHTTPMethod:@"GET"];
+//    
+//    NSHTTPURLResponse * urlResponse = nil;
+//    NSError* error = [[NSError alloc]init];
+//    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error: &error];
+//    NSMutableString *result = [[NSMutableString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+//    
+//    NSLog(@"%@",result);
+//    
+//    self.nameLabel.text = result;
 }
 
 - (void)didReceiveMemoryWarning {

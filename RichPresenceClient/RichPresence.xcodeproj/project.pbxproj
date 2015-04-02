@@ -12,12 +12,20 @@
 		3F976C9B1ACA3C13004573AB /* getLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F976C9A1ACA3C13004573AB /* getLocation.m */; };
 		3F976C9D1ACA6393004573AB /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F976C9C1ACA6393004573AB /* CoreMotion.framework */; };
 		3FE8873E1ACB9F4B00BDBCD1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE8873D1ACB9F4B00BDBCD1 /* CoreGraphics.framework */; };
-		3FE887401ACBA0BB00BDBCD1 /* GraphicsServices in Resources */ = {isa = PBXBuildFile; fileRef = 3FE8873F1ACBA0BB00BDBCD1 /* GraphicsServices */; };
 		EE4759711AC8E57B00AD43D9 /* MeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4759701AC8E57B00AD43D9 /* MeDetailViewController.m */; };
 		EE5C1CF51A9B92B3003AFF8D /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = EE5C1CF41A9B92B3003AFF8D /* splash.png */; };
 		EE5C1CF91A9BD923003AFF8D /* Vanamo_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EE5C1CF81A9BD923003AFF8D /* Vanamo_Logo.png */; };
 		EE5C1CFB1A9BDAF2003AFF8D /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = EE5C1CFA1A9BDAF2003AFF8D /* profile.png */; };
 		EE5C1CFD1A9BE02B003AFF8D /* me.png in Resources */ = {isa = PBXBuildFile; fileRef = EE5C1CFC1A9BE02B003AFF8D /* me.png */; };
+		EE71CC0D1ACCD15B00DEA449 /* os8fo.png in Resources */ = {isa = PBXBuildFile; fileRef = EE71CC0A1ACCD15B00DEA449 /* os8fo.png */; };
+		EE71CC0E1ACCD15B00DEA449 /* blankbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = EE71CC0B1ACCD15B00DEA449 /* blankbutton.png */; };
+		EE71CC0F1ACCD15B00DEA449 /* orange button.png in Resources */ = {isa = PBXBuildFile; fileRef = EE71CC0C1ACCD15B00DEA449 /* orange button.png */; };
+		EE71CC111ACCD26E00DEA449 /* back1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EE71CC101ACCD26E00DEA449 /* back1.jpg */; };
+		EE71CC131ACCD55A00DEA449 /* back2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EE71CC121ACCD55A00DEA449 /* back2.jpg */; };
+		EE71CC151ACCDA7700DEA449 /* mc.png in Resources */ = {isa = PBXBuildFile; fileRef = EE71CC141ACCDA7700DEA449 /* mc.png */; };
+		EE71CC171ACCDE1700DEA449 /* back3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EE71CC161ACCDE1700DEA449 /* back3.jpeg */; };
+		EE71CC1A1ACCE18F00DEA449 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE71CC191ACCE18F00DEA449 /* LoginViewController.m */; };
+		EE71CC1F1ACCF40D00DEA449 /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = EE71CC1E1ACCF40D00DEA449 /* Info.png */; };
 		EE83EE2A1A9A686C006B3BBF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE83EE291A9A686C006B3BBF /* main.m */; };
 		EE83EE2D1A9A686C006B3BBF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EE83EE2C1A9A686C006B3BBF /* AppDelegate.m */; };
 		EE83EE301A9A686C006B3BBF /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE83EE2F1A9A686C006B3BBF /* MasterViewController.m */; };
@@ -46,13 +54,22 @@
 		3F976C9A1ACA3C13004573AB /* getLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getLocation.m; sourceTree = "<group>"; };
 		3F976C9C1ACA6393004573AB /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		3FE8873D1ACB9F4B00BDBCD1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		3FE8873F1ACBA0BB00BDBCD1 /* GraphicsServices */ = {isa = PBXFileReference; lastKnownFileType = folder; name = GraphicsServices; path = "../../../Downloads/iphoneheaders-master/GraphicsServices"; sourceTree = "<group>"; };
 		EE47596F1AC8E57B00AD43D9 /* MeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeDetailViewController.h; sourceTree = "<group>"; };
 		EE4759701AC8E57B00AD43D9 /* MeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeDetailViewController.m; sourceTree = "<group>"; };
 		EE5C1CF41A9B92B3003AFF8D /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = SOURCE_ROOT; };
 		EE5C1CF81A9BD923003AFF8D /* Vanamo_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Vanamo_Logo.png; sourceTree = SOURCE_ROOT; };
 		EE5C1CFA1A9BDAF2003AFF8D /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = SOURCE_ROOT; };
 		EE5C1CFC1A9BE02B003AFF8D /* me.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = me.png; sourceTree = SOURCE_ROOT; };
+		EE71CC0A1ACCD15B00DEA449 /* os8fo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = os8fo.png; sourceTree = SOURCE_ROOT; };
+		EE71CC0B1ACCD15B00DEA449 /* blankbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blankbutton.png; sourceTree = SOURCE_ROOT; };
+		EE71CC0C1ACCD15B00DEA449 /* orange button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange button.png"; sourceTree = SOURCE_ROOT; };
+		EE71CC101ACCD26E00DEA449 /* back1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = back1.jpg; sourceTree = SOURCE_ROOT; };
+		EE71CC121ACCD55A00DEA449 /* back2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = back2.jpg; sourceTree = SOURCE_ROOT; };
+		EE71CC141ACCDA7700DEA449 /* mc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mc.png; sourceTree = SOURCE_ROOT; };
+		EE71CC161ACCDE1700DEA449 /* back3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = back3.jpeg; sourceTree = SOURCE_ROOT; };
+		EE71CC181ACCE18F00DEA449 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		EE71CC191ACCE18F00DEA449 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		EE71CC1E1ACCF40D00DEA449 /* Info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Info.png; sourceTree = SOURCE_ROOT; };
 		EE83EE241A9A686C006B3BBF /* RichPresence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RichPresence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE83EE281A9A686C006B3BBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE83EE291A9A686C006B3BBF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -94,7 +111,6 @@
 		EE83EE1B1A9A686C006B3BBF = {
 			isa = PBXGroup;
 			children = (
-				3FE8873F1ACBA0BB00BDBCD1 /* GraphicsServices */,
 				3FE8873D1ACB9F4B00BDBCD1 /* CoreGraphics.framework */,
 				3F976C9C1ACA6393004573AB /* CoreMotion.framework */,
 				3F976C971ACA3BE6004573AB /* CoreLocation.framework */,
@@ -124,6 +140,8 @@
 				EE83EE321A9A686C006B3BBF /* DetailViewController.m */,
 				EE83EE341A9A686C006B3BBF /* Main.storyboard */,
 				EE83EE371A9A686C006B3BBF /* Images.xcassets */,
+				EE71CC181ACCE18F00DEA449 /* LoginViewController.h */,
+				EE71CC191ACCE18F00DEA449 /* LoginViewController.m */,
 				EE83EE391A9A686C006B3BBF /* LaunchScreen.xib */,
 				EE83EE271A9A686C006B3BBF /* Supporting Files */,
 				EE47596F1AC8E57B00AD43D9 /* MeDetailViewController.h */,
@@ -139,6 +157,14 @@
 		EE83EE271A9A686C006B3BBF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EE71CC1E1ACCF40D00DEA449 /* Info.png */,
+				EE71CC161ACCDE1700DEA449 /* back3.jpeg */,
+				EE71CC141ACCDA7700DEA449 /* mc.png */,
+				EE71CC121ACCD55A00DEA449 /* back2.jpg */,
+				EE71CC101ACCD26E00DEA449 /* back1.jpg */,
+				EE71CC0A1ACCD15B00DEA449 /* os8fo.png */,
+				EE71CC0B1ACCD15B00DEA449 /* blankbutton.png */,
+				EE71CC0C1ACCD15B00DEA449 /* orange button.png */,
 				EE5C1CFC1A9BE02B003AFF8D /* me.png */,
 				EE5C1CFA1A9BDAF2003AFF8D /* profile.png */,
 				EE5C1CF81A9BD923003AFF8D /* Vanamo_Logo.png */,
@@ -246,12 +272,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE71CC151ACCDA7700DEA449 /* mc.png in Resources */,
+				EE71CC0F1ACCD15B00DEA449 /* orange button.png in Resources */,
+				EE71CC171ACCDE1700DEA449 /* back3.jpeg in Resources */,
 				EE5C1CF51A9B92B3003AFF8D /* splash.png in Resources */,
 				EE5C1CFB1A9BDAF2003AFF8D /* profile.png in Resources */,
+				EE71CC131ACCD55A00DEA449 /* back2.jpg in Resources */,
 				EE83EE361A9A686C006B3BBF /* Main.storyboard in Resources */,
+				EE71CC0D1ACCD15B00DEA449 /* os8fo.png in Resources */,
 				EE83EE3B1A9A686C006B3BBF /* LaunchScreen.xib in Resources */,
+				EE71CC0E1ACCD15B00DEA449 /* blankbutton.png in Resources */,
 				EE5C1CF91A9BD923003AFF8D /* Vanamo_Logo.png in Resources */,
-				3FE887401ACBA0BB00BDBCD1 /* GraphicsServices in Resources */,
+				EE71CC111ACCD26E00DEA449 /* back1.jpg in Resources */,
+				EE71CC1F1ACCF40D00DEA449 /* Info.png in Resources */,
 				EE83EE381A9A686C006B3BBF /* Images.xcassets in Resources */,
 				EE5C1CFD1A9BE02B003AFF8D /* me.png in Resources */,
 			);
@@ -271,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE71CC1A1ACCE18F00DEA449 /* LoginViewController.m in Sources */,
 				EE4759711AC8E57B00AD43D9 /* MeDetailViewController.m in Sources */,
 				EE83EE2D1A9A686C006B3BBF /* AppDelegate.m in Sources */,
 				EE83EE301A9A686C006B3BBF /* MasterViewController.m in Sources */,

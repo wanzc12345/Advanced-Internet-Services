@@ -9,6 +9,9 @@
 #import "LoginViewController.h"
 
 @interface LoginViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *idTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+- (IBAction)loginClicked:(id)sender;
 
 @end
 
@@ -34,4 +37,11 @@
 }
 */
 
+- (IBAction)loginClicked:(id)sender {
+    self.idTextField.text = @"fuck";
+
+    UIViewController *wc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]
+                                    instantiateViewControllerWithIdentifier:@"TabBarController"];
+    [self presentViewController:wc animated:YES completion:nil];
+}
 @end
