@@ -34,6 +34,8 @@
 		EE83EE381A9A686C006B3BBF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE83EE371A9A686C006B3BBF /* Images.xcassets */; };
 		EE83EE3B1A9A686C006B3BBF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE83EE391A9A686C006B3BBF /* LaunchScreen.xib */; };
 		EE83EE471A9A686C006B3BBF /* RichPresenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EE83EE461A9A686C006B3BBF /* RichPresenceTests.m */; };
+		EE85F2F81ACE25770003A9A3 /* back4.png in Resources */ = {isa = PBXBuildFile; fileRef = EE85F2F71ACE25770003A9A3 /* back4.png */; };
+		EE85F2FA1ACE2D8A0003A9A3 /* back5.png in Resources */ = {isa = PBXBuildFile; fileRef = EE85F2F91ACE2D8A0003A9A3 /* back5.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,8 @@
 		EE83EE401A9A686C006B3BBF /* RichPresenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RichPresenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE83EE451A9A686C006B3BBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE83EE461A9A686C006B3BBF /* RichPresenceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RichPresenceTests.m; sourceTree = "<group>"; };
+		EE85F2F71ACE25770003A9A3 /* back4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back4.png; sourceTree = SOURCE_ROOT; };
+		EE85F2F91ACE2D8A0003A9A3 /* back5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back5.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +161,8 @@
 		EE83EE271A9A686C006B3BBF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EE85F2F91ACE2D8A0003A9A3 /* back5.png */,
+				EE85F2F71ACE25770003A9A3 /* back4.png */,
 				EE71CC1E1ACCF40D00DEA449 /* Info.png */,
 				EE71CC161ACCDE1700DEA449 /* back3.jpeg */,
 				EE71CC141ACCDA7700DEA449 /* mc.png */,
@@ -273,7 +279,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE71CC151ACCDA7700DEA449 /* mc.png in Resources */,
+				EE85F2F81ACE25770003A9A3 /* back4.png in Resources */,
 				EE71CC0F1ACCD15B00DEA449 /* orange button.png in Resources */,
+				EE85F2FA1ACE2D8A0003A9A3 /* back5.png in Resources */,
 				EE71CC171ACCDE1700DEA449 /* back3.jpeg in Resources */,
 				EE5C1CF51A9B92B3003AFF8D /* splash.png in Resources */,
 				EE5C1CFB1A9BDAF2003AFF8D /* profile.png in Resources */,
