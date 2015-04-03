@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <CoreLocation/CoreLocation.h>
+#import <CoreMotion/CoreMotion.h>
 @interface MeDetailViewController : UIViewController
+
+@property (strong, nonatomic) id detailItem;
+@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (nonatomic,strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CMMotionManager *motionManager;
 
 @end
