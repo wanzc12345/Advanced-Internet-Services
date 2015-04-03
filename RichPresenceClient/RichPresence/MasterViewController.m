@@ -113,6 +113,8 @@
     NSDate *object = self.objects[indexPath.row];
     cell.textLabel.text = [object description];
     cell.detailTextLabel.text = @"In a shower";
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.detailTextLabel.textColor = [UIColor yellowColor];
     return cell;
 }
 
