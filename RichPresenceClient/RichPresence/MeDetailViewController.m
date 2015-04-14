@@ -66,6 +66,23 @@
     NSString *volume = [NSString stringWithFormat:@"%f", vol];
     self.VolumeLabel.text = volume;
     
+    //post request
+    NSString *post = [NSString stringWithFormat:@"{\"userID\":\"zw2291@columbia.edu\",\"password\":\"123\"}"];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long) [postData length]];
+    NSMutableURLRequest *request_pst = [[NSMutableURLRequest alloc] init];
+    [request_pst setURL:[NSURL URLWithString:@"http://aisdzt.elasticbeanstalk.com/login"]];
+    [request_pst setHTTPMethod:@"POST"];
+    [request_pst setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request_pst setHTTPBody:postData];
+    NSURLResponse *requestResponse;
+    NSData *requestHandler = [NSURLConnection sendSynchronousRequest:request_pst returningResponse:&requestResponse error:nil];
+    NSString *requestReply = [[NSString alloc] initWithBytes:[requestHandler bytes] length:[requestHandler length] encoding:NSASCIIStringEncoding];
+    NSLog(@"requestReply: %@", requestReply);
+ 
+    
+    
+    
     //location
     
     self.locationManager = [[CLLocationManager alloc] init];

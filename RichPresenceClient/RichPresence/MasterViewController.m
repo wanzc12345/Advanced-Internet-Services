@@ -42,8 +42,10 @@
     indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     
-    
-    
+    //get uis & psw from login
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *uid = [defaults objectForKey:@"username"];
+    NSString *psw = [defaults objectForKey:@"password"];
     
     //NSString* phoneVersion = [[UIDevice currentDevice] systemVersion];  //手机系统版本
     //NSString* deviceName = [[UIDevice currentDevice] systemName]; //设备名称

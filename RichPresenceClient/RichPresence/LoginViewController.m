@@ -20,6 +20,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:@"cmy" forKey:@"username"];
+    [defaults setObject:@"abc" forKey:@"password"];
+    [defaults synchronize];
+
 }
 
 - (void)didReceiveMemoryWarning {
