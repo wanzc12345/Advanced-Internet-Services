@@ -12,6 +12,7 @@
 //#import "GraphicsServices.h"
 //#import <GraphicsServices/GraphicsServices.h>
 #import <AVFoundation/AVAudioSession.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface DetailViewController () <CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *OsLabel;
@@ -94,9 +95,13 @@
     NSString *batLevel = [NSString stringWithFormat:@"%f", batLeft];
     self.BatteryLabel.text = batLevel;
     
-    float vol = [[AVAudioSession sharedInstance] outputVolume];
+    float vol = [[MPMusicPlayerController applicationMusicPlayer] volume];
     NSString *volume = [NSString stringWithFormat:@"%f", vol];
     self.VolumeLabel.text = volume;
+    
+    // current time since 1970
+    NSTimeInterval curTime = [[NSDate date] timeIntervalSince1970];
+
     
     self.motionManager = [[CMMotionManager alloc] init];
     self.motionManager.accelerometerUpdateInterval = 1;
