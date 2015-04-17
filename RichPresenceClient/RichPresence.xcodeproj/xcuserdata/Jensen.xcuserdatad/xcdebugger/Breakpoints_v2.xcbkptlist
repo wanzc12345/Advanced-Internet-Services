@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RichPresence/LoginViewController.m"
-            timestampString = "449638130.403835"
+            timestampString = "450927282.700023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "-loginClicked:"
             landmarkType = "5">
          </BreakpointContent>

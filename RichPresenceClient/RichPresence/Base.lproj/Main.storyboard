@@ -37,7 +37,7 @@
                             <textField opaque="NO" clipsSubviews="YES" alpha="0.69999999999999973" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZdW-8O-AfT">
                                 <rect key="frame" x="85" y="314" width="204" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" alpha="0.84999999999999987" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgW-0l-8zz">
                                 <rect key="frame" x="216" y="402" width="60" height="38.5"/>
@@ -76,10 +76,10 @@
             </objects>
             <point key="canvasLocation" x="-493.5" y="83"/>
         </scene>
-        <!--View Controller-->
+        <!--Signup View Controller-->
         <scene sceneID="aOs-ia-dBS">
             <objects>
-                <viewController id="4DO-ls-Ljy" sceneMemberID="viewController">
+                <viewController id="4DO-ls-Ljy" customClass="SignupViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wsB-HV-neI"/>
                         <viewControllerLayoutGuide type="bottom" id="dsQ-Fs-9H7"/>
@@ -92,27 +92,27 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Work Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="85P-Ln-T6k">
-                                <rect key="frame" x="87" y="464" width="200" height="30"/>
+                                <rect key="frame" x="87" y="482" width="200" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Home Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5E3-ZG-p80">
-                                <rect key="frame" x="87" y="393" width="200" height="30"/>
+                                <rect key="frame" x="87" y="423" width="200" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="63z-Mi-9Cd">
-                                <rect key="frame" x="87" y="316" width="200" height="30"/>
+                                <rect key="frame" x="87" y="308" width="200" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repeat Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S7H-ts-qV1">
+                                <rect key="frame" x="87" y="364" width="200" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ewY-Tw-66v">
-                                <rect key="frame" x="87" y="248" width="200" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GeB-PY-gl0">
-                                <rect key="frame" x="87" y="178" width="200" height="30"/>
+                                <rect key="frame" x="87" y="243" width="200" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -127,10 +127,13 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="onOkClicked:" destination="4DO-ls-Ljy" eventType="touchUpInside" id="jcP-gR-xAS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" alpha="0.85000002384185791" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ka-MO-qVo">
                                 <rect key="frame" x="227" y="557" width="60" height="38.5"/>
-                                <state key="normal" title="Cancel" backgroundImage="orange button.png">
+                                <state key="normal" title="Return" backgroundImage="orange button.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -147,10 +150,23 @@
                                     <color key="titleShadowColor" white="0.1973684211" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GeB-PY-gl0">
+                                <rect key="frame" x="87" y="177" width="200" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="firstName" destination="GeB-PY-gl0" id="6MQ-VZ-FVn"/>
+                        <outlet property="homeAddress" destination="5E3-ZG-p80" id="zCn-qz-2rS"/>
+                        <outlet property="lastName" destination="ewY-Tw-66v" id="mt5-PI-Rwv"/>
+                        <outlet property="password" destination="63z-Mi-9Cd" id="b2x-yM-oeQ"/>
+                        <outlet property="userid" destination="T8D-W8-hNT" id="uWJ-YA-SqN"/>
+                        <outlet property="workAddress" destination="85P-Ln-T6k" id="eig-VJ-eaM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O0b-4R-xJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -408,8 +424,8 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z51-BG-dke">
                                 <rect key="frame" x="67" y="131" width="267" height="303"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Team:          Manyi Chen          Qi Yang          Zihao Wang
-         Zhicheng Wan  Origin:          Advanced Internet Services          Columbia University  Professor:           Hennings Schuzzrine  Contact:           zw2275@columbia.edu             All rights reversed.</mutableString>
+                                <string key="text">Team:          Manyi Chen          Qi Yang          Zihao Wang
+         Zhicheng Wan  Origin:          Advanced Internet Services          Columbia University  Professor:           Hennings Schuzzrine  Contact:           zw2275@columbia.edu             All rights reversed.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -663,6 +679,6 @@
         <image name="profile.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="180-TY-3FG"/>
+        <segue reference="2Aq-5r-1zM"/>
     </inferredMetricsTieBreakers>
 </document>

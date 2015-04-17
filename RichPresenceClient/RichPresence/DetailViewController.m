@@ -98,7 +98,6 @@
     NSString *volume = [NSString stringWithFormat:@"%f", vol];
     self.VolumeLabel.text = volume;
     
-    
     self.motionManager = [[CMMotionManager alloc] init];
     self.motionManager.accelerometerUpdateInterval = 1;
     //self.motionManager.delegate = self;
