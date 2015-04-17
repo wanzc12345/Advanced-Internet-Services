@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 /**
  * Servlet implementation class AddFriend
@@ -42,45 +43,66 @@ public class AddFriend extends HttpServlet {
 			return;
 		}
 		Statement stmt = null;
+		Statement stmt1 = null;
 		ResultSet rs = null;
+		ResultSet rs1 = null;
 		  try {
 			stmt = conn.createStatement();
+			stmt1 = conn.createStatement();
+			String query1 = "SELECT * from User_Info_DB WHERE userID = " + "'" + friendID + "'";
 			String query = "SELECT friendList from User_Info_DB WHERE userID = " + "'" + userID + "'";
-			rs = stmt.executeQuery(query);
-			JSONArray jsonTF = new JSONArray();
-			try {
-			  while(rs.next()) {
-				String friendList = rs.getString("friendList");
-				String[] users = friendList.split(" ");
-				String userslist = new String();
-				for (int i = 0; i < users.length; i++){
-					if (users[i].equals(friendID.trim())){
-						jsonTF.add("false");
-					}
-					else{
-						if (i == users.length - 1){
-							userslist += users[i];
+			JSONObject jsonTF = new JSONObject();
+			rs1 = stmt1.executeQuery(query1);
+			if (rs1.first())
+			{
+				if (userID.equals(friendID)){
+					jsonTF.put("status", "False");
+					jsonTF.put("message", "You can not add yourself friend!");
+					response.getWriter().write(jsonTF.toString());
+				}
+				else {
+					rs = stmt.executeQuery(query);
+					try {
+					  while(rs.next()) {
+						String friendList = rs.getString("friendList");
+						String userslist = new String();
+						if (friendList == null || friendList == "" || friendList == " "){
+							
 						}
 						else{
-							userslist += users[i] + " ";
+							String[] users = friendList.split(" ");
+							for (int i = 0; i < users.length; i++){
+								if (users[i].equals(friendID.trim())){
+									jsonTF.put("message", "This User is already your friend!");
+									jsonTF.put("status", "False");
+								}
+								else{
+									userslist += users[i] + " ";
+								}
+							}
 						}
+						if (jsonTF.size() == 0){
+							jsonTF.put("status","True");
+							userslist += friendID;
+							Statement state = conn.createStatement();
+							query = "UPDATE User_Info_DB SET friendList = " + "'" + userslist + "'" + "WHERE userID = " + "'" + userID + "'";
+							state.executeUpdate(query);
+							state.close();
+						}
+					  }
+					  response.getWriter().write(jsonTF.toString());
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
-				if (jsonTF.size() == 0){
-					jsonTF.add("True");
-					userslist += " " + friendID;
-					Statement state = conn.createStatement();
-					query = "UPDATE User_Info_DB SET friendList = " + "'" + userslist + "'" + "WHERE userID = " + "'" + userID + "'";
-					state.executeUpdate(query);
-					state.close();
-				}
-			  }
-			  response.getWriter().write(jsonTF.toString());
-			} catch (Exception e) {
-				e.printStackTrace();
+				stmt.close();
+				conn.close();
 			}
-			stmt.close();
-			conn.close();
+			else{
+				jsonTF.put("message", "The user you want to add does not exists!");
+				jsonTF.put("status", "False");
+				response.getWriter().write(jsonTF.toString());
+			}
 		  } catch (SQLException e) {
 			e.printStackTrace();
 		  }

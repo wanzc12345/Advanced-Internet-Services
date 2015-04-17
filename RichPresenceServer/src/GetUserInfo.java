@@ -17,7 +17,7 @@ import java.sql.Statement;
 /**
  * Servlet implementation class GetUserInfo
  */
-@WebServlet("/GetUserInfo")
+@WebServlet("/get_user_info")
 public class GetUserInfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

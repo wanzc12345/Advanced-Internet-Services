@@ -18,7 +18,7 @@ import org.json.simple.JSONObject;
 /**
  * Servlet implementation class GetFriendsList
  */
-@WebServlet("/GetFriendsList")
+@WebServlet("/get_friends_list")
 public class GetFriendsList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
