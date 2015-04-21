@@ -35,39 +35,21 @@
     if (!self.objects) {
         self.objects = [[NSMutableArray alloc] init];
     }
-    [self.objects insertObject:@"Jensen" atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    [self.objects insertObject:@"Jensen" atIndex:0];
-    indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     
-    //get uis & psw from login
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *uid = [defaults objectForKey:@"username"];
-    NSString *psw = [defaults objectForKey:@"password"];
+    NSString *uid = [defaults objectForKey:@"currentuserid"];
     
-    //NSString* phoneVersion = [[UIDevice currentDevice] systemVersion];  //手机系统版本
-    //NSString* deviceName = [[UIDevice currentDevice] systemName]; //设备名称
-    NSString* phoneModel = [[UIDevice currentDevice] model]; //手机型号
-    NSString* userPhoneName = [[UIDevice currentDevice] name];  //手机别名： 用户定义的名称
-    NSString* sn = [[UIDevice currentDevice] serialNumber];  //序列号
-    [UIDevice currentDevice].batteryMonitoringEnabled = YES;
-    double deviceLevel = [UIDevice currentDevice].batteryLevel;
+    //get friends list
+    NSError *error;
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://aisdzt.elasticbeanstalk.com/get_friends_list?userID=%@", uid]]];
+    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSArray *friendsIdList = [[NSArray alloc] initWithArray:[NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableContainers error:&error]];
     
-    //get current time
-    NSDate *  senddate=[NSDate date];
-    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-    [dateformatter setDateFormat:@"MM/dd/yyyy hh:mm:ss"];
-    NSString *  locationString=[dateformatter stringFromDate:senddate];
-    
-    float vol = [[AVAudioSession sharedInstance] outputVolume]; // current volume
-    
-    // current battery level
-    [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
-    UIDevice *myDevice = [UIDevice currentDevice];
-    [myDevice setBatteryMonitoringEnabled:YES];
-    double batLeft = (float)[myDevice batteryLevel];
+    for(int i=0;i<[friendsIdList count];i++){
+        [self.objects insertObject:[friendsIdList objectAtIndex:i] atIndex:0];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
     
     //change background
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"back5.png"]];
@@ -84,9 +66,42 @@
     if (!self.objects) {
         self.objects = [[NSMutableArray alloc] init];
     }
-    [self.objects insertObject:@"Jensen" atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Add Friend" message:@"Enter user id:" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles: nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert addButtonWithTitle:@"Add"];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {  //add button
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *uid = [defaults objectForKey:@"currentuserid"];
+        
+        UITextField *friendid = [alertView textFieldAtIndex:0].text;
+        
+        //add friend
+        NSError *error;
+        NSString *url =[NSString stringWithFormat:@"http://aisdzt.elasticbeanstalk.com/add_friend?MyUserID=%@&FriendUserID=%@", uid, friendid];
+        NSLog(url);
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        NSDictionary *Dic = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+        NSLog(@"%@", Dic);
+        if([[Dic objectForKey:@"status"]  isEqual: @"True"]){
+            UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Success!" message:@"" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            [alert show];
+            [self.objects insertObject:friendid atIndex:0];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+            [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            
+        }else{
+            UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Error!" message:[Dic objectForKey:@"message"] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            [alert show];
+        }
+    }
 }
 
 #pragma mark - Segues
@@ -127,8 +142,23 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *uid = [defaults objectForKey:@"currentuserid"];
+        
+        //remove friend
+        NSError *error;
+        NSString *friendid = [self.objects objectAtIndex:indexPath.row];
+        NSLog(friendid);
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://aisdzt.elasticbeanstalk.com/remove_friend?MyUserID=%@&FriendUserID=%@", uid, friendid]]];
+        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        NSArray *friendsIdList = [[NSArray alloc] initWithArray:[NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableContainers error:&error]];
+        
         [self.objects removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+        UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Success!" message:@"" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [alert show];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }

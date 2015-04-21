@@ -129,25 +129,37 @@
     self.BrightnessLabel.text = brs;
     //[self.view addSubview:_jsonAnalizer];
      //[self.jsonAnalizer addTarget:self action:@selector(jsonAnalizer:) forControlEvents:UIControlEventTouchUpInside];
-    
-    NSError *error;
-    //加载一个NSURL对象
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://aisdzt.elasticbeanstalk.com/GetUserInfo?userID=qy2152@columbia.edu"]];
-    //将请求的url数据放到NSData对象中
-    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    //IOS5自带解析类NSJSONSerialization从response中解析出数据放到字典中
-    NSDictionary *Dic = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
-    NSDictionary *Info = [Dic objectForKey:@"firstName"];
-    NSLog([NSString stringWithFormat:@"first name: %@, last name: %@, home Address: %@ ",[Dic objectForKey:@"firstName"],[Dic objectForKey:@"lastName"],[Dic objectForKey:@"homeAddress"]]);
-    NSLog(@"weatherInfo字典里面的内容为--》%@", Dic );
 
 }
 
 
 /*
 
+ //NSString* phoneVersion = [[UIDevice currentDevice] systemVersion];  //手机系统版本
+ //NSString* deviceName = [[UIDevice currentDevice] systemName]; //设备名称
+ NSString* phoneModel = [[UIDevice currentDevice] model]; //手机型号
+ NSString* userPhoneName = [[UIDevice currentDevice] name];  //手机别名： 用户定义的名称
+ NSString* sn = [[UIDevice currentDevice] serialNumber];  //序列号
+ [UIDevice currentDevice].batteryMonitoringEnabled = YES;
+ double deviceLevel = [UIDevice currentDevice].batteryLevel;
+ 
+ //get current time
+ NSDate *  senddate=[NSDate date];
+ NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+ [dateformatter setDateFormat:@"MM/dd/yyyy hh:mm:ss"];
+ NSString *  locationString=[dateformatter stringFromDate:senddate];
+ 
+ float vol = [[AVAudioSession sharedInstance] outputVolume]; // current volume
+ 
+ // current battery level
+ [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
+ UIDevice *myDevice = [UIDevice currentDevice];
+ [myDevice setBatteryMonitoringEnabled:YES];
+ double batLeft = (float)[myDevice batteryLevel];
+ 
+ 
 - (IBAction)jsonAnalizer:(id)sender {
-    
+ 
     NSError *error;
     //加载一个NSURL对象
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://aisdzt.elasticbeanstalk.com/GetUserInfo?userID=qy2152@columbia.edu"]];

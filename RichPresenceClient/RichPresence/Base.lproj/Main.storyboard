@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="r9X-6c-sXV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="r9X-6c-sXV">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -334,7 +334,10 @@
                         <outlet property="LocationLabel" destination="Mie-2A-IJd" id="bRg-7S-nws"/>
                         <outlet property="OsLabel" destination="t55-cC-AxI" id="LoN-c2-EIa"/>
                         <outlet property="VolumeLabel" destination="LPZ-sm-7ZZ" id="INR-ni-leo"/>
-                        <outlet property="nameLabel" destination="mas-0p-YDD" id="Qce-Et-fJl"/>
+                        <outlet property="addressLabel" destination="iJX-6r-qaP" id="5FP-L6-7oT"/>
+                        <outlet property="firstnameLabel" destination="mas-0p-YDD" id="ig3-wn-dwy"/>
+                        <outlet property="idLabel" destination="FP6-by-uHS" id="cky-oD-s9v"/>
+                        <outlet property="lastnameLabel" destination="CQI-l9-5DX" id="z10-Aj-slx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7m6-B0-UvX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -679,6 +682,6 @@
         <image name="profile.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2Aq-5r-1zM"/>
+        <segue reference="180-TY-3FG"/>
     </inferredMetricsTieBreakers>
 </document>
