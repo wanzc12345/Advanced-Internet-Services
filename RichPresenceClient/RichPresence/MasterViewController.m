@@ -110,7 +110,12 @@
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSDate *object = self.objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+        //[[segue destinationViewController] setDetailItem:object];
+        
+        //NSLog(object);
+        id page2=segue.destinationViewController;
+        [page2 setValue:object forKey:@"value"];
+    
     }
 }
 
@@ -135,6 +140,11 @@
     return cell;
 }
 
+
+
+
+
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
@@ -156,6 +166,17 @@
         
         [self.objects removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        //DetailViewController *second = [[DetailViewController alloc] initWithNibName:@'DetailViewController'bundle:nil];
+        //second.delegate = self;
+        //second.flag = 0;
+        //[self presentViewController:second animated:YES completion:nil];
+        
+        
+        
+        
+        
+        
+        
         
         UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Success!" message:@"" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
         [alert show];
@@ -163,5 +184,43 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
 }
+
+
+
+/*- (void) Next
+{
+    DetailViewController *next = [[DetailViewController alloc]initWithNibName:@"DetailViewController" bundle:[NSBundle mainBundle]];//初始化下一個界面
+    next.delegate = self;//將這個類中的self傳遞给NextViewController類的delegate
+    /*
+     這一句話是最重要的，delegate 是在NectViewController這個界面中定義好的 代理類的對象
+     NSObject<ViewDelegate> *delegate;
+     @property(nonatomic,assign)NSObject<ViewDelegate> *delegate;
+     
+     通過 next.delegate = self; 這句話，给人的感覺就好像是 把第二個類中的 delegate 初始化了一样，也使得這兩個類通過代理類連接了起來
+     這样，在第二個類中 就可以用delegate這個代理類的對象去調用它自己的方法來進行賦值（在返回上一個頁面的時候操作）
+     - (void) Back//點擊 back 的方法
+     {
+     [delegate passValue:self.nameText.text];//通過delegate調用代理方法
+     [self dismissModalViewControllerAnimated:YES];
+     }
+     這样呢，就相當於passValue這個方法中的参數存儲了 數值
+     
+     然後在第一個類中 去實現這個方法就可以得到從第二個類傳過來的數值了
+     - (void)passValue:(NSString *)value
+     {
+     self.nameLabel.text = value;//把數值在label中顯示出來
+     }
+     
+    [self presentModalViewController:next animated:YES];
+}
+*/
+
+- (void)passValue:(NSString *)value
+{
+    self.value.text = value;
+    NSLog(@"the get value is %@", value);
+}
+
+
 
 @end

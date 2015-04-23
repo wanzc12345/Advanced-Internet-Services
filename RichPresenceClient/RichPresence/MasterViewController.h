@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ViewDelegate.h"
 
-@interface MasterViewController : UITableViewController
-
-
+@interface MasterViewController : UITableViewController<ViewDelegate>
+{
+    UITextField *_value;
+}
+@property(nonatomic, retain) IBOutlet UITextField *value;
 @end
 
