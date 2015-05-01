@@ -54,6 +54,9 @@
     //change background
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"back5.png"]];
     [self.tableView setBackgroundView:imageView];
+    
+    AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+    myDelegate.login = 1;
 
 }
 
