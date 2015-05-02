@@ -12,6 +12,7 @@
 //#import "GraphicsServices.h"
 //#import <GraphicsServices/GraphicsServices.h>
 #import <AVFoundation/AVAudioSession.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface DetailViewController () <CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *OsLabel;
@@ -21,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *LocationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *AccLabel;
 @property (weak, nonatomic) IBOutlet UILabel *BrightnessLabel;
+
 //@property (weak, nonatomic) IBOutlet UIButton *jsonAnalizer;
 //@property (weak, nonatomic) IBOutlet UIButton *jsonAnalizer;
 
@@ -94,10 +96,13 @@
     NSString *batLevel = [NSString stringWithFormat:@"%f", batLeft];
     self.BatteryLabel.text = batLevel;
     
-    float vol = [[AVAudioSession sharedInstance] outputVolume];
+    float vol = [[MPMusicPlayerController applicationMusicPlayer] volume];
     NSString *volume = [NSString stringWithFormat:@"%f", vol];
     self.VolumeLabel.text = volume;
     
+    // current time since 1970
+    NSTimeInterval curTime = [[NSDate date] timeIntervalSince1970];
+
     
     self.motionManager = [[CMMotionManager alloc] init];
     self.motionManager.accelerometerUpdateInterval = 1;
@@ -123,43 +128,22 @@
     double br = [[UIScreen mainScreen] brightness];
     NSString *brs = [NSString stringWithFormat:@"%.2f", br];
     self.BrightnessLabel.text = brs;
-    //[self.view addSubview:_jsonAnalizer];
-     //[self.jsonAnalizer addTarget:self action:@selector(jsonAnalizer:) forControlEvents:UIControlEventTouchUpInside];
-    
-    NSError *error;
-    //加载一个NSURL对象
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://aisdzt.elasticbeanstalk.com/GetUserInfo?userID=qy2152@columbia.edu"]];
-    //将请求的url数据放到NSData对象中
-    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    //IOS5自带解析类NSJSONSerialization从response中解析出数据放到字典中
-    NSDictionary *Dic = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
-    NSDictionary *Info = [Dic objectForKey:@"firstName"];
-    NSLog([NSString stringWithFormat:@"first name: %@, last name: %@, home Address: %@ ",[Dic objectForKey:@"firstName"],[Dic objectForKey:@"lastName"],[Dic objectForKey:@"homeAddress"]]);
-    NSLog(@"weatherInfo字典里面的内容为--》%@", Dic );
 
 }
 
 
-/*
-
-- (IBAction)jsonAnalizer:(id)sender {
-    
-    NSError *error;
-    //加载一个NSURL对象
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://aisdzt.elasticbeanstalk.com/GetUserInfo?userID=qy2152@columbia.edu"]];
-    //将请求的url数据放到NSData对象中
-    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    //IOS5自带解析类NSJSONSerialization从response中解析出数据放到字典中
-    NSDictionary *Dic = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
-    NSDictionary *Info = [Dic objectForKey:@"firstName"];
-    NSLog([NSString stringWithFormat:@"first name: %@, last name: %@, home Address: %@ ",[Info objectForKey:@"firstName"],[Info objectForKey:@"lastName"],[Info objectForKey:@"homeAddress"]]);
-    NSLog(@"weatherInfo字典里面的内容为--》%@", Dic );
-}
-*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+@synthesize delegate;
+@synthesize value = _value;
+
+
+
 
 @end

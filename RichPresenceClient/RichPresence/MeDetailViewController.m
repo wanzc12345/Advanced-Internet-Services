@@ -14,7 +14,8 @@
 #import <AVFoundation/AVAudioSession.h>
 
 @interface MeDetailViewController () <CLLocationManagerDelegate>
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lastnameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *firstnameLabel;
 //@property (weak, nonatomic) IBOutlet UILabel *OsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *SNLabel;
 @property (weak, nonatomic) IBOutlet UILabel *BatteryLabel;
@@ -28,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *BrightnessLabel;
 @property (weak, nonatomic) IBOutlet UILabel *AccLabel;
 @property (weak, nonatomic) IBOutlet UILabel *LocationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *idLabel;
 
 @end
 
@@ -36,19 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//    NSString *urlString = [NSString stringWithFormat:@"http://www.google.com"];
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-//    [request setURL:[NSURL URLWithString:urlString]];
-//    [request setHTTPMethod:@"GET"];
-//    
-//    NSHTTPURLResponse * urlResponse = nil;
-//    NSError* error = [[NSError alloc]init];
-//    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error: &error];
-//    NSMutableString *result = [[NSMutableString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-//    
-//    NSLog(@"%@",result);
-//    
-//    self.nameLabel.text = result;
+
     NSString* deviceName = [[UIDevice currentDevice] systemName];
     NSString* phoneVersion = [[UIDevice currentDevice] systemVersion];
     self.OsLabel.text = [deviceName stringByAppendingString:phoneVersion];
@@ -65,23 +56,6 @@
     float vol = [[AVAudioSession sharedInstance] outputVolume];
     NSString *volume = [NSString stringWithFormat:@"%f", vol];
     self.VolumeLabel.text = volume;
-    
-    //post request
-    NSString *post = [NSString stringWithFormat:@"{\"userID\":\"zw2291@columbia.edu\",\"password\":\"123\"}"];
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long) [postData length]];
-    NSMutableURLRequest *request_pst = [[NSMutableURLRequest alloc] init];
-    [request_pst setURL:[NSURL URLWithString:@"http://aisdzt.elasticbeanstalk.com/login"]];
-    [request_pst setHTTPMethod:@"POST"];
-    [request_pst setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request_pst setHTTPBody:postData];
-    NSURLResponse *requestResponse;
-    NSData *requestHandler = [NSURLConnection sendSynchronousRequest:request_pst returningResponse:&requestResponse error:nil];
-    NSString *requestReply = [[NSString alloc] initWithBytes:[requestHandler bytes] length:[requestHandler length] encoding:NSASCIIStringEncoding];
-    NSLog(@"requestReply: %@", requestReply);
- 
-    
-    
     
     //location
     
@@ -116,19 +90,19 @@
     double br = [[UIScreen mainScreen] brightness];
     NSString *brs = [NSString stringWithFormat:@"%.2f", br];
     self.BrightnessLabel.text = brs;
-    //[self.view addSubview:_jsonAnalizer];
-    //[self.jsonAnalizer addTarget:self action:@selector(jsonAnalizer:) forControlEvents:UIControlEventTouchUpInside];
     
+    //load user info
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *uid = [defaults objectForKey:@"currentuserid"];
     NSError *error;
-    //加载一个NSURL对象
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://aisdzt.elasticbeanstalk.com/GetUserInfo?userID=qy2152@columbia.edu"]];
-    //将请求的url数据放到NSData对象中
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://aisdzt.elasticbeanstalk.com/get_user_info?userID=%@", uid]]];
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    //IOS5自带解析类NSJSONSerialization从response中解析出数据放到字典中
     NSDictionary *Dic = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
-    NSDictionary *Info = [Dic objectForKey:@"firstName"];
-    NSLog([NSString stringWithFormat:@"first name: %@, last name: %@, home Address: %@ ",[Dic objectForKey:@"firstName"],[Dic objectForKey:@"lastName"],[Dic objectForKey:@"homeAddress"]]);
-    NSLog(@"weatherInfo字典里面的内容为--》%@", Dic );
+    
+    self.firstnameLabel.text = [Dic objectForKey:@"firstName"];
+    self.lastnameLabel.text = [Dic objectForKey:@"lastName"];
+    self.addressLabel.text = [Dic objectForKey:@"homeAddress"];
+    self.idLabel.text = uid;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -9,14 +9,25 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <CoreMotion/CoreMotion.h>
+#import "ViewDelegate.h"
 
 @interface DetailViewController : UIViewController <CLLocationManagerDelegate>
+
+{
+    NSObject<ViewDelegate> * delegate;
+    UITextField *_value;
+}
 
 @property (strong, nonatomic) id detailItem;
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @property (nonatomic,strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CMMotionManager *motionManager;
+@property(nonatomic) NSInteger flag;
 //@property (weak, nonatomic) IBOutlet UIButton *jsonAnalizer;
 //- (IBAction)jsonAnalizer:(id)sender;
+
+
+@property(nonatomic, retain)IBOutlet UITextField *value;
+@property(nonatomic, retain) NSObject<ViewDelegate> * delegate;
 
 @end

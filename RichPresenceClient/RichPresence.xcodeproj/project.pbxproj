@@ -38,6 +38,7 @@
 		EE85F2FA1ACE2D8A0003A9A3 /* back5.png in Resources */ = {isa = PBXBuildFile; fileRef = EE85F2F91ACE2D8A0003A9A3 /* back5.png */; };
 		EE85F2FE1ACE3B2E0003A9A3 /* back6.png in Resources */ = {isa = PBXBuildFile; fileRef = EE85F2FD1ACE3B2E0003A9A3 /* back6.png */; };
 		EE85F3001ACE3EDB0003A9A3 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EE85F2FF1ACE3EDB0003A9A3 /* logo.png */; };
+		EE8622A71AE0AEEE008D649D /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8622A61AE0AEEE008D649D /* SignupViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,8 @@
 		EE85F2F91ACE2D8A0003A9A3 /* back5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back5.png; sourceTree = SOURCE_ROOT; };
 		EE85F2FD1ACE3B2E0003A9A3 /* back6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back6.png; sourceTree = SOURCE_ROOT; };
 		EE85F2FF1ACE3EDB0003A9A3 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = SOURCE_ROOT; };
+		EE8622A51AE0AEEE008D649D /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
+		EE8622A61AE0AEEE008D649D /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +150,8 @@
 				EE83EE311A9A686C006B3BBF /* DetailViewController.h */,
 				EE83EE321A9A686C006B3BBF /* DetailViewController.m */,
 				EE83EE341A9A686C006B3BBF /* Main.storyboard */,
+				EE8622A51AE0AEEE008D649D /* SignupViewController.h */,
+				EE8622A61AE0AEEE008D649D /* SignupViewController.m */,
 				EE83EE371A9A686C006B3BBF /* Images.xcassets */,
 				EE71CC181ACCE18F00DEA449 /* LoginViewController.h */,
 				EE71CC191ACCE18F00DEA449 /* LoginViewController.m */,
@@ -253,9 +258,11 @@
 				TargetAttributes = {
 					EE83EE231A9A686C006B3BBF = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 2HAP75936G;
 					};
 					EE83EE3F1A9A686C006B3BBF = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 2HAP75936G;
 						TestTargetID = EE83EE231A9A686C006B3BBF;
 					};
 				};
@@ -323,6 +330,7 @@
 				EE71CC1A1ACCE18F00DEA449 /* LoginViewController.m in Sources */,
 				EE4759711AC8E57B00AD43D9 /* MeDetailViewController.m in Sources */,
 				EE83EE2D1A9A686C006B3BBF /* AppDelegate.m in Sources */,
+				EE8622A71AE0AEEE008D649D /* SignupViewController.m in Sources */,
 				EE83EE301A9A686C006B3BBF /* MasterViewController.m in Sources */,
 				3F976C951ACA3A9C004573AB /* getSN.m in Sources */,
 				3F976C9B1ACA3C13004573AB /* getLocation.m in Sources */,
@@ -449,6 +457,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = RichPresence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -459,6 +468,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = RichPresence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

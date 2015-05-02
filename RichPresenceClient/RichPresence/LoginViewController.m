@@ -20,10 +20,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:@"cmy" forKey:@"username"];
-    [defaults setObject:@"abc" forKey:@"password"];
-    [defaults synchronize];
+    
+    AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+    myDelegate.login = 0;
+    
+
 
 }
 
@@ -43,10 +44,43 @@
 */
 
 - (IBAction)loginClicked:(id)sender {
-    self.idTextField.text = @"fuck";
-
-    UIViewController *wc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]
-                                    instantiateViewControllerWithIdentifier:@"TabBarController"];
-    [self presentViewController:wc animated:YES completion:nil];
+    
+    //post request to check username and password
+    NSString *post = [NSString stringWithFormat:@"{\"userID\":\"%@\",\"password\":\"%@\"}", self.idTextField.text, self.passwordTextField.text];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long) [postData length]];
+    NSMutableURLRequest *request_pst = [[NSMutableURLRequest alloc] init];
+    [request_pst setURL:[NSURL URLWithString:@"http://aisdzt.elasticbeanstalk.com/login"]];
+    [request_pst setHTTPMethod:@"POST"];
+    [request_pst setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request_pst setHTTPBody:postData];
+    NSURLResponse *requestResponse;
+    NSData *requestHandler = [NSURLConnection sendSynchronousRequest:request_pst returningResponse:&requestResponse error:nil];
+    NSString *requestReply = [[NSString alloc] initWithBytes:[requestHandler bytes] length:[requestHandler length] encoding:NSASCIIStringEncoding];
+    NSLog(@"login request reply: %@", requestReply);
+    
+    if([requestReply hasPrefix:@"welcome"]){
+        
+        //set current user to this user
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:self.idTextField.text forKey:@"currentuserid"];
+        [defaults synchronize];
+        
+        UIViewController *wc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]
+                                instantiateViewControllerWithIdentifier:@"TabBarController"];
+        [self presentViewController:wc animated:YES completion:nil];
+        
+        AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+        myDelegate.login = 1;
+        
+        
+    }else{
+        UIAlertView *errorAlert = [[UIAlertView alloc]
+                                   initWithTitle:@"Error" message:@"Wrong username or password!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [errorAlert show];
+        AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+        myDelegate.login = 0;
+        
+    }
 }
 @end
