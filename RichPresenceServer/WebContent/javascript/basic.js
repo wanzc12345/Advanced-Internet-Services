@@ -3,7 +3,9 @@
  */
 
 function userLogin() {
+  //alert("haha");
   var userID = $('#userID').val();
+  alert(userID);
   var password = $('#password').val();
   $.ajax({
 	  url: 'login',
