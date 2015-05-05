@@ -141,7 +141,7 @@
     cell.detailTextLabel.text = @"In a shower";
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.detailTextLabel.textColor = [UIColor yellowColor];
-    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"profile%ld.png", indexPath.row]];
+    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", self.objects[indexPath.row]]];
     return cell;
 }
 

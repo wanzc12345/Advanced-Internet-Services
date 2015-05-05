@@ -93,7 +93,7 @@
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSDictionary *Dic = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
 
-    self.ProfileImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"profile%@.png", self.row]];
+    self.ProfileImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", self.friendid]];
     self.NameLabel.text = [NSString stringWithFormat:@"%@ %@", [Dic objectForKey:@"firstName"], [Dic objectForKey:@"lastName"]];
 }
 

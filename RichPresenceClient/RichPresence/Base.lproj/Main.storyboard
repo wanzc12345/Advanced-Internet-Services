@@ -326,7 +326,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Me" image="profile.png" id="vZd-mi-wBD"/>
+                    <tabBarItem key="tabBarItem" title="Me" image="profile.jpg" id="vZd-mi-wBD"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="AccLabel" destination="wrn-Q8-fVS" id="7RA-vF-LZg"/>
@@ -338,6 +338,7 @@
                         <outlet property="firstnameLabel" destination="mas-0p-YDD" id="ig3-wn-dwy"/>
                         <outlet property="idLabel" destination="FP6-by-uHS" id="cky-oD-s9v"/>
                         <outlet property="lastnameLabel" destination="CQI-l9-5DX" id="z10-Aj-slx"/>
+                        <outlet property="profileImage" destination="wbo-Pw-aZS" id="Qbq-Zu-yXA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7m6-B0-UvX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -640,15 +641,15 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="L9w-bn-I90">
-                                <rect key="frame" x="107" y="94" width="43" height="44"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Zhicheng Wan" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdU-Iu-nZ0">
                                 <rect key="frame" x="185" y="99" width="112" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.96862751250000001" green="0.9450981021" blue="0.2078431547" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="L9w-bn-I90">
+                                <rect key="frame" x="87" y="72" width="82" height="82"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -681,6 +682,7 @@
         <image name="logo.png" width="512" height="512"/>
         <image name="mc.png" width="424" height="428"/>
         <image name="orange button.png" width="400" height="165"/>
+        <image name="profile.jpg" width="30" height="30"/>
         <image name="profile.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>

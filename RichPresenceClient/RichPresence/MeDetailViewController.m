@@ -14,6 +14,7 @@
 #import <AVFoundation/AVAudioSession.h>
 
 @interface MeDetailViewController () <CLLocationManagerDelegate>
+@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UILabel *lastnameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *firstnameLabel;
 //@property (weak, nonatomic) IBOutlet UILabel *OsLabel;
@@ -39,7 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    
     NSString* deviceName = [[UIDevice currentDevice] systemName];
     NSString* phoneVersion = [[UIDevice currentDevice] systemVersion];
     self.OsLabel.text = [deviceName stringByAppendingString:phoneVersion];
@@ -94,6 +95,7 @@
     //load user info
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *uid = [defaults objectForKey:@"currentuserid"];
+    self.profileImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", uid]];
     NSError *error;
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://aisdzt.elasticbeanstalk.com/get_user_info?userID=%@", uid]]];
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
