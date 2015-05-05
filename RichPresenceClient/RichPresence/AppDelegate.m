@@ -120,6 +120,66 @@
 
 
 
+- (void)getInformation
+{
+    self.deviceName = [[UIDevice currentDevice] systemName];
+    self.phoneVersion = [[UIDevice currentDevice] systemVersion];
+    
+    self.sn = [[UIDevice currentDevice] serialNumber];
+    
+    [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
+    UIDevice *myDevice = [UIDevice currentDevice];
+    [myDevice setBatteryMonitoringEnabled:YES];
+    double batLeft = (float)[myDevice batteryLevel];
+    self.batLevel = [NSString stringWithFormat:@"%f", batLeft];
+    
+    float vol = [[AVAudioSession sharedInstance] outputVolume];
+    self.volume = [NSString stringWithFormat:@"%f", vol];
+    
+    //location
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager requestAlwaysAuthorization];
+    //[self.locationManager startUpdatingLocation];
+    
+    
+    self.motionManager = [[CMMotionManager alloc] init];
+    self.motionManager.accelerometerUpdateInterval = 1;
+    //self.motionManager.delegate = self;
+    
+    if ([self.motionManager isAccelerometerAvailable])
+    {
+        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+        [self.motionManager startAccelerometerUpdatesToQueue:queue withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.accX = [NSString stringWithFormat:@"%.2f",accelerometerData.acceleration.x];
+                self.accY = [NSString stringWithFormat:@"%.2f",accelerometerData.acceleration.y];
+                self.accZ = [NSString stringWithFormat:@"%.2f",accelerometerData.acceleration.z];
+                
+            });
+        }];
+    } else
+        NSLog(@"not active");
+    
+    double br = [[UIScreen mainScreen] brightness];
+    self.brs = [NSString stringWithFormat:@"%.2f", br];
+    
+    //load user info
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *uid = [defaults objectForKey:@"currentuserid"];
+    NSError *error;
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://aisdzt.elasticbeanstalk.com/get_user_info?userID=%@", uid]]];
+    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSDictionary *Dic = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+    
+    self.firstName = [Dic objectForKey:@"firstName"];
+    self.lastName = [Dic objectForKey:@"lastName"];
+    self.add = [Dic objectForKey:@"homeAddress"];
+    self.userId = uid;
+    
+}
+
+
+
 
 
 
@@ -130,9 +190,10 @@
     {
         // Start the long-running task.
         NSLog(@"登录状态后台进程开启");
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+
             // When the job expires it still keeps running since we never exited it. Thus have the expiration handler
             // set a flag that the job expired and use that to exit the while loop and end the task.
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
             NSInteger count=0;
             BOOL NoticeNoBackground=false;//只通知一次标志位
             BOOL FlushBackgroundTime=false;//只通知一次标志位
@@ -143,15 +204,40 @@
                 NSLog(@"进入后台进程循环");
                 [NSThread sleepForTimeInterval:1];
                 count++;
-                if(count>60)//每60s进行一次开启定位，刷新后台时间
+                if(count>10)//每60s进行一次开启定位，刷新后台时间
                 {
                     count=0;
                     [locationManager startUpdatingLocation];
                     NSLog(@"开始位置服务");
                     [NSThread sleepForTimeInterval:1];
+                    [self getInformation];
                     [locationManager stopUpdatingLocation];
                     NSLog(@"停止位置服务");
                     FlushBackgroundTime=false;
+                    
+                    NSTimeInterval curTime = [[NSDate date] timeIntervalSince1970];
+                    self.timestamp = [NSString stringWithFormat:@"%lf",curTime];
+                    
+                    
+                    NSString *post = [NSString stringWithFormat:@"{\"userID\":\"%@\",\"timestamp\":\"%@\",\"latitude\":\"%@\",\"longitude\":\"%@\",\"xAcc\":\"%@\",\"yAcc\":\"%@\",\"zAcc\":\"%@\", \"volume\":\"%@\",\"brightness\":\"%@\",\"batteryLevel\":\"%@\",\"OSType\":\"%@\",\"OSVersion\":\"%@\",\"serialNumber\":\"%@\"}", self.userId, self.timestamp, self.latitude, self.longitude, self.accX, self.accY, self.accZ, self.volume, self.brs, self.batLevel, self.deviceName, self.phoneVersion, self.sn];
+//                    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+//                    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long) [postData length]];
+//                    NSMutableURLRequest *request_pst = [[NSMutableURLRequest alloc] init];
+//                    [request_pst setURL:[NSURL URLWithString:@"http://aisdzt.elasticbeanstalk.com/sign_up"]];
+//                    [request_pst setHTTPMethod:@"POST"];
+//                    [request_pst setValue:postLength forHTTPHeaderField:@"Content-Length"];
+//                    [request_pst setHTTPBody:postData];
+//                    NSURLResponse *requestResponse;
+//                    NSData *requestHandler = [NSURLConnection sendSynchronousRequest:request_pst returningResponse:&requestResponse error:nil];
+//                    NSString *requestReply = [[NSString alloc] initWithBytes:[requestHandler bytes] length:[requestHandler length] encoding:NSASCIIStringEncoding];
+                    NSLog(post);
+//                    NSLog(@"updata information from background reply: %@", requestReply);
+                    
+//                    UIAlertView *errorAlert = [[UIAlertView alloc]
+//                                               initWithTitle:@"Error" message:requestReply delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//                    [errorAlert show];
+
+                    
                 }
                 if(!login)//未登录或者掉线状态下关闭后台
                 {
@@ -206,8 +292,8 @@
     //NSTimeInterval backgroundTimeRemaining = [[UIApplication sharedApplication] backgroundTimeRemaining];
     //NSLog(@"Background Time Remaining = %.02f Seconds",backgroundTimeRemaining);
     // Lat/Lon
-    float latitudeMe = loc.coordinate.latitude;
-    float longitudeMe = loc.coordinate.longitude;
+    self.latitude = [NSString stringWithFormat:@"%f", loc.coordinate.latitude];
+    self.longitude = [NSString stringWithFormat:@"%f", loc.coordinate.longitude];
     }
 
 
