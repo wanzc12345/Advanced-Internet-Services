@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ViewDelegate.h"
+#import "AppDelegate.h"
 
 @interface MasterViewController : UITableViewController<ViewDelegate>
 {

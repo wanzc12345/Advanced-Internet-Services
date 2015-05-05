@@ -20,6 +20,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+    myDelegate.login = 0;
+    
+
 
 }
 
@@ -65,10 +70,16 @@
                                 instantiateViewControllerWithIdentifier:@"TabBarController"];
         [self presentViewController:wc animated:YES completion:nil];
         
+        AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+        myDelegate.login = 1;
+        
+        
     }else{
         UIAlertView *errorAlert = [[UIAlertView alloc]
                                    initWithTitle:@"Error" message:@"Wrong username or password!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [errorAlert show];
+        AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+        myDelegate.login = 0;
         
     }
 }
