@@ -15,7 +15,8 @@
 
 {
     NSObject<ViewDelegate> * delegate;
-    UITextField *_value;
+    UITextField *_friendid;
+    UITextField *_row;
 }
 
 @property (strong, nonatomic) id detailItem;
@@ -27,7 +28,8 @@
 //- (IBAction)jsonAnalizer:(id)sender;
 
 
-@property(nonatomic, retain)IBOutlet UITextField *value;
+@property(nonatomic, retain)IBOutlet UITextField *friendid;
+@property(nonatomic, retain)IBOutlet UITextField *row;
 @property(nonatomic, retain) NSObject<ViewDelegate> * delegate;
 
 @end

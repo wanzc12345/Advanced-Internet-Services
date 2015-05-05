@@ -114,7 +114,8 @@
         
         //NSLog(object);
         id page2=segue.destinationViewController;
-        [page2 setValue:object forKey:@"value"];
+        [page2 setValue:object forKey:@"friendid"];
+        [page2 setValue:[NSString stringWithFormat:@"%ld",indexPath.row] forKey:@"row"];
     
     }
 }
@@ -137,13 +138,9 @@
     cell.detailTextLabel.text = @"In a shower";
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.detailTextLabel.textColor = [UIColor yellowColor];
+    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"profile%ld.png", indexPath.row]];
     return cell;
 }
-
-
-
-
-
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
@@ -170,13 +167,6 @@
         //second.delegate = self;
         //second.flag = 0;
         //[self presentViewController:second animated:YES completion:nil];
-        
-        
-        
-        
-        
-        
-        
         
         UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Success!" message:@"" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
         [alert show];

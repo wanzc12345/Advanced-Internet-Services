@@ -15,6 +15,8 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface DetailViewController () <CLLocationManagerDelegate>
+@property (weak, nonatomic) IBOutlet UIImageView *ProfileImage;
+@property (weak, nonatomic) IBOutlet UILabel *NameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *OsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *SNLabel;
 @property (weak, nonatomic) IBOutlet UILabel *BatteryLabel;
@@ -83,52 +85,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self configureView];
-    NSString* deviceName = [[UIDevice currentDevice] systemName];
-    NSString* phoneVersion = [[UIDevice currentDevice] systemVersion];
-    self.OsLabel.text = [deviceName stringByAppendingString:phoneVersion];
-    NSString* sn = [[UIDevice currentDevice] serialNumber];
-    self.SNLabel.text = sn;
     
-    [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
-    UIDevice *myDevice = [UIDevice currentDevice];
-    [myDevice setBatteryMonitoringEnabled:YES];
-    double batLeft = (float)[myDevice batteryLevel];
-    NSString *batLevel = [NSString stringWithFormat:@"%f", batLeft];
-    self.BatteryLabel.text = batLevel;
+    NSLog(@"%@", self.row);
     
-    float vol = [[MPMusicPlayerController applicationMusicPlayer] volume];
-    NSString *volume = [NSString stringWithFormat:@"%f", vol];
-    self.VolumeLabel.text = volume;
-    
-    // current time since 1970
-    NSTimeInterval curTime = [[NSDate date] timeIntervalSince1970];
+    NSError *error;
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://aisdzt.elasticbeanstalk.com/get_user_info?userID=%@", self.friendid]]];
+    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSDictionary *Dic = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
 
-    
-    self.motionManager = [[CMMotionManager alloc] init];
-    self.motionManager.accelerometerUpdateInterval = 1;
-    //self.motionManager.delegate = self;
-    
-    if ([self.motionManager isAccelerometerAvailable])
-    {
-        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-        [self.motionManager startAccelerometerUpdatesToQueue:queue withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                NSString *x, *y, *z;
-                x = [NSString stringWithFormat:@"%.2f",accelerometerData.acceleration.x];
-                y = [NSString stringWithFormat:@"%.2f",accelerometerData.acceleration.y];
-                z = [NSString stringWithFormat:@"%.2f",accelerometerData.acceleration.z];
-                self.AccLabel.text = [x stringByAppendingString: y];
-                self.AccLabel.text = [self.AccLabel.text stringByAppendingString: z];
-                
-            });
-        }];
-    } else
-        NSLog(@"not active");
-    
-    double br = [[UIScreen mainScreen] brightness];
-    NSString *brs = [NSString stringWithFormat:@"%.2f", br];
-    self.BrightnessLabel.text = brs;
-
+    self.ProfileImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"profile%@.png", self.row]];
+    self.NameLabel.text = [NSString stringWithFormat:@"%@ %@", [Dic objectForKey:@"firstName"], [Dic objectForKey:@"lastName"]];
 }
 
 
@@ -141,7 +107,8 @@
 
 
 @synthesize delegate;
-@synthesize value = _value;
+@synthesize friendid = _friendid;
+@synthesize row = _row;
 
 
 
