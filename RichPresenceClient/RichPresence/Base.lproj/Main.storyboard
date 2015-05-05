@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="r9X-6c-sXV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="r9X-6c-sXV">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -270,7 +270,7 @@
                             </label>
                             <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Speed" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="cxz-IG-g1H">
                                 <rect key="frame" x="65" y="346" width="121" height="17"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" size="system"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -284,14 +284,14 @@
                             </label>
                             <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Brightness" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="apx-He-GSp">
                                 <rect key="frame" x="65" y="450" width="121" height="17"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" size="system"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Address" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="cwB-Sg-0n5">
                                 <rect key="frame" x="65" y="553" width="121" height="17"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" size="system"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -326,7 +326,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Me" image="profile.png" id="vZd-mi-wBD"/>
+                    <tabBarItem key="tabBarItem" title="Me" image="profile.jpg" id="vZd-mi-wBD"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="AccLabel" destination="wrn-Q8-fVS" id="7RA-vF-LZg"/>
@@ -334,7 +334,11 @@
                         <outlet property="LocationLabel" destination="Mie-2A-IJd" id="bRg-7S-nws"/>
                         <outlet property="OsLabel" destination="t55-cC-AxI" id="LoN-c2-EIa"/>
                         <outlet property="VolumeLabel" destination="LPZ-sm-7ZZ" id="INR-ni-leo"/>
-                        <outlet property="nameLabel" destination="mas-0p-YDD" id="Qce-Et-fJl"/>
+                        <outlet property="addressLabel" destination="iJX-6r-qaP" id="5FP-L6-7oT"/>
+                        <outlet property="firstnameLabel" destination="mas-0p-YDD" id="ig3-wn-dwy"/>
+                        <outlet property="idLabel" destination="FP6-by-uHS" id="cky-oD-s9v"/>
+                        <outlet property="lastnameLabel" destination="CQI-l9-5DX" id="z10-Aj-slx"/>
+                        <outlet property="profileImage" destination="wbo-Pw-aZS" id="Qbq-Zu-yXA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7m6-B0-UvX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -513,7 +517,7 @@
                             </imageView>
                             <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Location" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="og1-QW-LFw">
                                 <rect key="frame" x="68" y="518" width="121" height="17"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" size="system"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -548,7 +552,7 @@
                             </label>
                             <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Speed" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="fEY-Rm-iON">
                                 <rect key="frame" x="68" y="209" width="121" height="17"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" size="system"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -562,7 +566,7 @@
                             </label>
                             <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Brightness" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="q6Y-LJ-D1Y">
                                 <rect key="frame" x="68" y="315" width="121" height="17"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" size="system"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -611,7 +615,7 @@
                             </label>
                             <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Serial Number" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="bBN-yK-IUP">
                                 <rect key="frame" x="68" y="413" width="121" height="17"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" size="system"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -644,7 +648,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="L9w-bn-I90">
-                                <rect key="frame" x="107" y="94" width="43" height="44"/>
+                                <rect key="frame" x="87" y="72" width="82" height="82"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -654,7 +658,9 @@
                         <outlet property="BatteryLabel" destination="0Ea-r5-AVG" id="0f3-xs-HIV"/>
                         <outlet property="BrightnessLabel" destination="wdb-lK-zs8" id="tbq-mx-qUf"/>
                         <outlet property="LocationLabel" destination="fdx-xB-wKg" id="LVS-SD-JqL"/>
+                        <outlet property="NameLabel" destination="CdU-Iu-nZ0" id="t4V-L3-EsH"/>
                         <outlet property="OsLabel" destination="zXa-0w-bE3" id="hRM-zQ-wbF"/>
+                        <outlet property="ProfileImage" destination="L9w-bn-I90" id="FF5-Jc-r6u"/>
                         <outlet property="SNLabel" destination="bh4-6Z-hPC" id="uj7-k4-e3I"/>
                         <outlet property="VolumeLabel" destination="HFC-qy-mbh" id="AVe-Vk-Y0F"/>
                     </connections>
@@ -676,9 +682,10 @@
         <image name="logo.png" width="512" height="512"/>
         <image name="mc.png" width="424" height="428"/>
         <image name="orange button.png" width="400" height="165"/>
+        <image name="profile.jpg" width="30" height="30"/>
         <image name="profile.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2Aq-5r-1zM"/>
+        <segue reference="180-TY-3FG"/>
     </inferredMetricsTieBreakers>
 </document>

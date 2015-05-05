@@ -15,8 +15,6 @@
 		EE4759711AC8E57B00AD43D9 /* MeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4759701AC8E57B00AD43D9 /* MeDetailViewController.m */; };
 		EE5C1CF51A9B92B3003AFF8D /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = EE5C1CF41A9B92B3003AFF8D /* splash.png */; };
 		EE5C1CF91A9BD923003AFF8D /* Vanamo_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EE5C1CF81A9BD923003AFF8D /* Vanamo_Logo.png */; };
-		EE5C1CFB1A9BDAF2003AFF8D /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = EE5C1CFA1A9BDAF2003AFF8D /* profile.png */; };
-		EE5C1CFD1A9BE02B003AFF8D /* me.png in Resources */ = {isa = PBXBuildFile; fileRef = EE5C1CFC1A9BE02B003AFF8D /* me.png */; };
 		EE71CC0D1ACCD15B00DEA449 /* os8fo.png in Resources */ = {isa = PBXBuildFile; fileRef = EE71CC0A1ACCD15B00DEA449 /* os8fo.png */; };
 		EE71CC0E1ACCD15B00DEA449 /* blankbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = EE71CC0B1ACCD15B00DEA449 /* blankbutton.png */; };
 		EE71CC0F1ACCD15B00DEA449 /* orange button.png in Resources */ = {isa = PBXBuildFile; fileRef = EE71CC0C1ACCD15B00DEA449 /* orange button.png */; };
@@ -39,6 +37,13 @@
 		EE85F2FE1ACE3B2E0003A9A3 /* back6.png in Resources */ = {isa = PBXBuildFile; fileRef = EE85F2FD1ACE3B2E0003A9A3 /* back6.png */; };
 		EE85F3001ACE3EDB0003A9A3 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EE85F2FF1ACE3EDB0003A9A3 /* logo.png */; };
 		EE8622A71AE0AEEE008D649D /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8622A61AE0AEEE008D649D /* SignupViewController.m */; };
+		EEA848E31AF84EAA00E582D9 /* profile.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EEA848E21AF84EAA00E582D9 /* profile.jpg */; };
+		EEA848F11AF85FC600E582D9 /* zw2291@columbia.edu.png in Resources */ = {isa = PBXBuildFile; fileRef = EEA848EC1AF85FC600E582D9 /* zw2291@columbia.edu.png */; };
+		EEA848F21AF85FC600E582D9 /* 123.png in Resources */ = {isa = PBXBuildFile; fileRef = EEA848ED1AF85FC600E582D9 /* 123.png */; };
+		EEA848F31AF85FC600E582D9 /* asdf.png in Resources */ = {isa = PBXBuildFile; fileRef = EEA848EE1AF85FC600E582D9 /* asdf.png */; };
+		EEA848F41AF85FC600E582D9 /* cmy.png in Resources */ = {isa = PBXBuildFile; fileRef = EEA848EF1AF85FC600E582D9 /* cmy.png */; };
+		EEA848F51AF85FC600E582D9 /* zw2275@columbia.edu.png in Resources */ = {isa = PBXBuildFile; fileRef = EEA848F01AF85FC600E582D9 /* zw2275@columbia.edu.png */; };
+		EEA848F71AF8619F00E582D9 /* qy2152@columbia.edu.png in Resources */ = {isa = PBXBuildFile; fileRef = EEA848F61AF8619F00E582D9 /* qy2152@columbia.edu.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,8 +68,6 @@
 		EE4759701AC8E57B00AD43D9 /* MeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeDetailViewController.m; sourceTree = "<group>"; };
 		EE5C1CF41A9B92B3003AFF8D /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = SOURCE_ROOT; };
 		EE5C1CF81A9BD923003AFF8D /* Vanamo_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Vanamo_Logo.png; sourceTree = SOURCE_ROOT; };
-		EE5C1CFA1A9BDAF2003AFF8D /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = SOURCE_ROOT; };
-		EE5C1CFC1A9BE02B003AFF8D /* me.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = me.png; sourceTree = SOURCE_ROOT; };
 		EE71CC0A1ACCD15B00DEA449 /* os8fo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = os8fo.png; sourceTree = SOURCE_ROOT; };
 		EE71CC0B1ACCD15B00DEA449 /* blankbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blankbutton.png; sourceTree = SOURCE_ROOT; };
 		EE71CC0C1ACCD15B00DEA449 /* orange button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange button.png"; sourceTree = SOURCE_ROOT; };
@@ -96,6 +99,13 @@
 		EE85F2FF1ACE3EDB0003A9A3 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = SOURCE_ROOT; };
 		EE8622A51AE0AEEE008D649D /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		EE8622A61AE0AEEE008D649D /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		EEA848E21AF84EAA00E582D9 /* profile.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = profile.jpg; sourceTree = SOURCE_ROOT; };
+		EEA848EC1AF85FC600E582D9 /* zw2291@columbia.edu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zw2291@columbia.edu.png"; sourceTree = SOURCE_ROOT; };
+		EEA848ED1AF85FC600E582D9 /* 123.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 123.png; sourceTree = SOURCE_ROOT; };
+		EEA848EE1AF85FC600E582D9 /* asdf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asdf.png; sourceTree = SOURCE_ROOT; };
+		EEA848EF1AF85FC600E582D9 /* cmy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cmy.png; sourceTree = SOURCE_ROOT; };
+		EEA848F01AF85FC600E582D9 /* zw2275@columbia.edu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zw2275@columbia.edu.png"; sourceTree = SOURCE_ROOT; };
+		EEA848F61AF8619F00E582D9 /* qy2152@columbia.edu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qy2152@columbia.edu.png"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +180,13 @@
 		EE83EE271A9A686C006B3BBF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EEA848F61AF8619F00E582D9 /* qy2152@columbia.edu.png */,
+				EEA848EC1AF85FC600E582D9 /* zw2291@columbia.edu.png */,
+				EEA848ED1AF85FC600E582D9 /* 123.png */,
+				EEA848EE1AF85FC600E582D9 /* asdf.png */,
+				EEA848EF1AF85FC600E582D9 /* cmy.png */,
+				EEA848F01AF85FC600E582D9 /* zw2275@columbia.edu.png */,
+				EEA848E21AF84EAA00E582D9 /* profile.jpg */,
 				EE85F2FF1ACE3EDB0003A9A3 /* logo.png */,
 				EE85F2FD1ACE3B2E0003A9A3 /* back6.png */,
 				EE85F2F91ACE2D8A0003A9A3 /* back5.png */,
@@ -182,8 +199,6 @@
 				EE71CC0A1ACCD15B00DEA449 /* os8fo.png */,
 				EE71CC0B1ACCD15B00DEA449 /* blankbutton.png */,
 				EE71CC0C1ACCD15B00DEA449 /* orange button.png */,
-				EE5C1CFC1A9BE02B003AFF8D /* me.png */,
-				EE5C1CFA1A9BDAF2003AFF8D /* profile.png */,
 				EE5C1CF81A9BD923003AFF8D /* Vanamo_Logo.png */,
 				EE5C1CF41A9B92B3003AFF8D /* splash.png */,
 				EE83EE281A9A686C006B3BBF /* Info.plist */,
@@ -258,9 +273,11 @@
 				TargetAttributes = {
 					EE83EE231A9A686C006B3BBF = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = PES3565RD6;
 					};
 					EE83EE3F1A9A686C006B3BBF = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 2HAP75936G;
 						TestTargetID = EE83EE231A9A686C006B3BBF;
 					};
 				};
@@ -290,24 +307,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE71CC151ACCDA7700DEA449 /* mc.png in Resources */,
+				EEA848F11AF85FC600E582D9 /* zw2291@columbia.edu.png in Resources */,
 				EE85F2F81ACE25770003A9A3 /* back4.png in Resources */,
 				EE71CC0F1ACCD15B00DEA449 /* orange button.png in Resources */,
+				EEA848E31AF84EAA00E582D9 /* profile.jpg in Resources */,
 				EE85F2FA1ACE2D8A0003A9A3 /* back5.png in Resources */,
 				EE71CC171ACCDE1700DEA449 /* back3.jpeg in Resources */,
 				EE5C1CF51A9B92B3003AFF8D /* splash.png in Resources */,
-				EE5C1CFB1A9BDAF2003AFF8D /* profile.png in Resources */,
 				EE71CC131ACCD55A00DEA449 /* back2.jpg in Resources */,
 				EE83EE361A9A686C006B3BBF /* Main.storyboard in Resources */,
 				EE85F2FE1ACE3B2E0003A9A3 /* back6.png in Resources */,
+				EEA848F51AF85FC600E582D9 /* zw2275@columbia.edu.png in Resources */,
 				EE71CC0D1ACCD15B00DEA449 /* os8fo.png in Resources */,
 				EE83EE3B1A9A686C006B3BBF /* LaunchScreen.xib in Resources */,
+				EEA848F71AF8619F00E582D9 /* qy2152@columbia.edu.png in Resources */,
 				EE85F3001ACE3EDB0003A9A3 /* logo.png in Resources */,
 				EE71CC0E1ACCD15B00DEA449 /* blankbutton.png in Resources */,
+				EEA848F21AF85FC600E582D9 /* 123.png in Resources */,
+				EEA848F41AF85FC600E582D9 /* cmy.png in Resources */,
+				EEA848F31AF85FC600E582D9 /* asdf.png in Resources */,
 				EE5C1CF91A9BD923003AFF8D /* Vanamo_Logo.png in Resources */,
 				EE71CC111ACCD26E00DEA449 /* back1.jpg in Resources */,
 				EE71CC1F1ACCF40D00DEA449 /* Info.png in Resources */,
 				EE83EE381A9A686C006B3BBF /* Images.xcassets in Resources */,
-				EE5C1CFD1A9BE02B003AFF8D /* me.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +477,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = RichPresence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -465,6 +488,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = RichPresence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
