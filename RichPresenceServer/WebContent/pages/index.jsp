@@ -684,16 +684,16 @@
 	            type: 'column'
 	        },
 	        title: {
-	            text: 'Coefficients Column Chart'
+	            text: 'Activities Column Chart'
 	        },
 	        xAxis: {
-	            categories: ['Household Income', 'Race', 'Sex', 'Zipcode', 'Has Visited', 'Is Visited Price High or Low', 'Has Purchased', 'Is Purchased Price High or Low', 'Stock']
+	            categories: ['Eating', 'Entertaining', 'In-transit', 'Running', 'Sleeping', 'Walking', 'Working', 'Worshiping', 'Shopping']
 	        },
 	        credits: {
 	            enabled: false
 	        },
 	        series: [{
-	            name: 'Correlation Coefficient',
+	            name: 'Times',
 	            data: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
 	        }]
 	    });
@@ -704,7 +704,7 @@
                 plotShadow: false
             },
             title: {
-                text: 'Coefficients Share Pie Chart'
+                text: 'Activity Percentage Pie Chart'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -721,22 +721,22 @@
             },
             series: [{
                 type: 'pie',
-                name: 'Coefficient Share',
+                name: 'percentage',
                 data: [
-                    ['Household Income',   0.5],
-                    ['Race', 0.5],
+                    ['Eating',   0.5],
+                    ['Entertaining', 0.5],
                     {
-                        name: 'Sex',
+                        name: 'In-transit',
                         y: 0.5,
                         sliced: true,
                         selected: true
                     },
-                    ['Zipcode',   0.5],
-                    ['Has Visited',     0.5],
-                    ['Is Visited Price High Or Low',  0.5],
-                    ['Has Purchased', 0.5],
-                    ['Is Purchased Price High Or Low', 0.5],
-                    ['Stock', 0.5]
+                    ['Running',   0.5],
+                    ['Sleeping',     0.5],
+                    ['Walking',  0.5],
+                    ['Working', 0.5],
+                    ['Worshiping', 0.5],
+                    ['Shopping', 0.5]
                 ]
             }]
         });
