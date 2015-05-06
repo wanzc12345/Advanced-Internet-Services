@@ -15,6 +15,7 @@
 		EE4759711AC8E57B00AD43D9 /* MeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4759701AC8E57B00AD43D9 /* MeDetailViewController.m */; };
 		EE5C1CF51A9B92B3003AFF8D /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = EE5C1CF41A9B92B3003AFF8D /* splash.png */; };
 		EE5C1CF91A9BD923003AFF8D /* Vanamo_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EE5C1CF81A9BD923003AFF8D /* Vanamo_Logo.png */; };
+		EE6D474C1AFAA0840009AD9B /* detailbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6D474B1AFAA0840009AD9B /* detailbutton.png */; };
 		EE71CC0D1ACCD15B00DEA449 /* os8fo.png in Resources */ = {isa = PBXBuildFile; fileRef = EE71CC0A1ACCD15B00DEA449 /* os8fo.png */; };
 		EE71CC0E1ACCD15B00DEA449 /* blankbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = EE71CC0B1ACCD15B00DEA449 /* blankbutton.png */; };
 		EE71CC0F1ACCD15B00DEA449 /* orange button.png in Resources */ = {isa = PBXBuildFile; fileRef = EE71CC0C1ACCD15B00DEA449 /* orange button.png */; };
@@ -77,6 +78,7 @@
 		EE4759701AC8E57B00AD43D9 /* MeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeDetailViewController.m; sourceTree = "<group>"; };
 		EE5C1CF41A9B92B3003AFF8D /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = SOURCE_ROOT; };
 		EE5C1CF81A9BD923003AFF8D /* Vanamo_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Vanamo_Logo.png; sourceTree = SOURCE_ROOT; };
+		EE6D474B1AFAA0840009AD9B /* detailbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = detailbutton.png; sourceTree = SOURCE_ROOT; };
 		EE71CC0A1ACCD15B00DEA449 /* os8fo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = os8fo.png; sourceTree = SOURCE_ROOT; };
 		EE71CC0B1ACCD15B00DEA449 /* blankbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blankbutton.png; sourceTree = SOURCE_ROOT; };
 		EE71CC0C1ACCD15B00DEA449 /* orange button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange button.png"; sourceTree = SOURCE_ROOT; };
@@ -201,6 +203,7 @@
 		EE83EE271A9A686C006B3BBF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EE6D474B1AFAA0840009AD9B /* detailbutton.png */,
 				EEF4DC251AF98981006CCF82 /* shop.png */,
 				EEF4DC231AF9890C006CCF82 /* entertainment.png */,
 				EEF4DC1F1AF98845006CCF82 /* worship.png */,
@@ -344,6 +347,7 @@
 				EE71CC171ACCDE1700DEA449 /* back3.jpeg in Resources */,
 				EE5C1CF51A9B92B3003AFF8D /* splash.png in Resources */,
 				EE71CC131ACCD55A00DEA449 /* back2.jpg in Resources */,
+				EE6D474C1AFAA0840009AD9B /* detailbutton.png in Resources */,
 				EEF4DC241AF9890C006CCF82 /* entertainment.png in Resources */,
 				EE83EE361A9A686C006B3BBF /* Main.storyboard in Resources */,
 				EE85F2FE1ACE3B2E0003A9A3 /* back6.png in Resources */,
