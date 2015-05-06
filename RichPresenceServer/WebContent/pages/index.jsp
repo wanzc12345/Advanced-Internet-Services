@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <title>SB Admin 2 - Bootstrap Admin Theme</title>
-
+	<script src="javascript/basic.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -284,8 +284,8 @@
                                   //  out.print(al);
                             for (int i = 0; i < al.size(); i++){
                           %>
-                        <li>
-                            <a href="index.html"><i class="nav nav-second-level"></i> <% out.print(al.get(i)); %></a>
+                        <li id="user<%out.print(i);%>">
+                            <a onclick = "specific(<%out.print(i);%>)" ><i class="nav nav-second-level"></i> <% out.print(al.get(i)); %></a>
                         </li>
                         <% }%>
                     </ul>
@@ -576,17 +576,7 @@
                         </div>
                         <!-- /.panel-body -->
                     </div>
-                    <!-- /.panel -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Donut Chart Example
-                        </div>
-                        <div class="panel-body">
-                            <div id="morris-donut-chart"></div>
-                            <a href="#" class="btn btn-default btn-block">View Details</a>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
+                    
                     <!-- /.panel -->
                     <div class="chat-panel panel panel-default">
                         <div class="panel-heading">

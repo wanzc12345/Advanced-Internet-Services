@@ -1,27 +1,23 @@
 /**
  * 
  */
-
+function specific(data){
+	alert($('#user'+data).children()[0].text);
+	
+}
 function userLogin() {
 	//alert("haha");
   var userID = $('#userID').val();
   var password = $('#password').val();
   //alert(userID);
-  $.ajax({
-	  url: '../../login',
-	  type: 'POST',
-	  dataType: 'text',
-	  data: JSON.stringify({
-	    userID : userID,
-	    password : password	
-	  }),
-	  success: function(response) {
-	      alert(reponse);
-	  }
-
-  });
-  alert(url);
-  return false;
+  var rightID = "admin";
+  var rightpsw = "admin";
+  if (rightID.test(userID) && rightpsw.test(password)){
+	  return true;
+  }
+  else{
+	  false;
+  }
 }
 
 function signUpFormSubmit() {

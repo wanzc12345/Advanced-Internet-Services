@@ -19,15 +19,11 @@ public class GetUsers {
 		ArrayList<String> al = new ArrayList<String>();
 		try {
 			stmt = conn.createStatement();
-			String userID = "zw2291@columbia.edu";
-			String query = "SELECT friendList from User_Info_DB WHERE userID = " + "'" + userID + "'";
+			String query = "SELECT userID from User_Info_DB";
 			rs = stmt.executeQuery(query);
 			while (rs.next()){
-				String userid = rs.getString("friendList");
-				String[] part = userid.split(" ");
-				for (int i = 0;i < part.length; i++){
-					al.add(part[i]);
-				}
+				String userid = rs.getString("userID");
+				al.add(userid);
 			}
 			stmt.close();
 			conn.close();

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<%@ page language="java" import="java.util.*, newnew.*" pageEncoding="UTF-8"%>
 <head>
 
     <meta charset="utf-8">
@@ -42,7 +42,7 @@
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" onsubmit="return userLogin()" method="post">
+                        <form role="form" onsubmit="userLogin()" method="post">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="E-mail" id = "userID" name="userID" type="email" autofocus>
