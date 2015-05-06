@@ -2,15 +2,34 @@
  * 
  */
 function specific(data){
-	alert($('#user'+data).children()[0].text);
-	$.ajax({
-		  url: '../get_user_info?userID='+$('#user'+data).children()[0].text,
+	var userID = $('#user'+data).children()[0].text;
+	  $.ajax({
+		  url: '../get_user_info?userID=' + userID,
 		  type: 'GET',
 		  dataType: 'text',
 		  success: function(response) {
-		      alert(response);
+			  var d = eval('('+response+')'); 
+			  $('#deviceinformationlist').empty();
+			  
+				  for (var key in d[0]){
+				  $('#deviceinformationlist').append('<li>' + key + ':' + d[0][key] + '</li>');
+				  }			  
+			  $('#informationtbody').empty();
+			  for (var i in d){
+				  if (i == 0){
+					  continue;
+				  }
+				  var row = "<tr>";
+				  row += "'<td>'" + i + "'</td>'";
+				  for (var value in d[i]){
+					  row += "'<td>'" + d[i][value] + "'</td>'";
+				  }
+				  row += "</tr>";
+				  $('#informationtbody').append(row);
+			  }
+			 
 		  }
-	});
+	  });
 }
 function userLogin() {
 	//alert("haha");
