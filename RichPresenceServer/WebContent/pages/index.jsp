@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Rich Presence Server</title>
 	<script src="javascript/basic.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -51,7 +51,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+                <a class="navbar-brand" href="index.html">Rich Presence Server</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -285,7 +285,7 @@
                             for (int i = 0; i < al.size(); i++){
                           %>
                         <li id="user<%out.print(i);%>">
-                            <a onclick = "specific(<%out.print(i);%>)" ><i class="nav nav-second-level"></i> <% out.print(al.get(i)); %></a>
+                            <a onclick = "specific(<%out.print(i);%>)" ><i class="nav nav-second-level"></i><% out.print(al.get(i)); %></a>
                         </li>
                         <% }%>
                     </ul>
@@ -298,7 +298,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard</h1>
+                    <h1 class="page-header">Dashboard-<%out.print(request.getParameter("user")); %></h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>

@@ -3,7 +3,14 @@
  */
 function specific(data){
 	alert($('#user'+data).children()[0].text);
-	
+	$.ajax({
+		  url: '../get_user_info?userID='+$('#user'+data).children()[0].text,
+		  type: 'GET',
+		  dataType: 'text',
+		  success: function(response) {
+		      alert(response);
+		  }
+	});
 }
 function userLogin() {
 	//alert("haha");

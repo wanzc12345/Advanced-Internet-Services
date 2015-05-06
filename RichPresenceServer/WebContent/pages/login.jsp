@@ -42,7 +42,7 @@
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" onsubmit="userLogin()" method="post">
+                        <form id="loginform" role="form" action="../login" method="post">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="E-mail" id = "userID" name="userID" type="email" autofocus>
@@ -78,5 +78,29 @@
     <script src="../dist/js/sb-admin-2.js"></script>
 
 </body>
+<script type="text/javascript">
+$('#loginform').submit(function(e){
+	e.preventDefault();
+	var userID = $('#userID').val();
+	var password = $('#password').val();
+	$.ajax({
+		  url: '../login',
+		  type: 'POST',
+		  dataType: 'text',
+		  data: JSON.stringify({
+		    userID : userID,
+		    password : password	
+		  }),
+		  success: function(response) {
+		      if(response=="true"){
+		      	//$.cookie("currentuser", userID);
+		      	location.href = "index.jsp?user="+userID;
+		      }else{
+		    	  alert("Wrong name or password!");
+		      }
+		  }
+	});
+});
+</script>
 
 </html>
