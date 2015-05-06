@@ -11,6 +11,7 @@
 
     <title>Rich Presence Server</title>
 	<script src="javascript/basic.js"></script>
+	
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -332,7 +333,8 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div id="morris-area-chart"></div>
+                            <div id="container1" style="width: 600px; height: 400px; margin: 0px auto;">fck</div>
+							<div id="container2" style="width: 600px; height: 400px; margin: 0px auto;"></div>
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -669,14 +671,77 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
-    <!-- Morris Charts JavaScript -->
-    <script src="../bower_components/raphael/raphael-min.js"></script>
-    <script src="../bower_components/morrisjs/morris.min.js"></script>
-    <script src="../js/morris-data.js"></script>
+    <script src="javascript/highcharts.js"></script>
+	<script src="javascript/exporting.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
 
+	<script type="text/javascript">
+	$(function () {
+	    $('#container1').highcharts({
+	        chart: {
+	            type: 'column'
+	        },
+	        title: {
+	            text: 'Coefficients Column Chart'
+	        },
+	        xAxis: {
+	            categories: ['Household Income', 'Race', 'Sex', 'Zipcode', 'Has Visited', 'Is Visited Price High or Low', 'Has Purchased', 'Is Purchased Price High or Low', 'Stock']
+	        },
+	        credits: {
+	            enabled: false
+	        },
+	        series: [{
+	            name: 'Correlation Coefficient',
+	            data: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+	        }]
+	    });
+	    $('#container2').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Coefficients Share Pie Chart'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Coefficient Share',
+                data: [
+                    ['Household Income',   0.5],
+                    ['Race', 0.5],
+                    {
+                        name: 'Sex',
+                        y: 0.5,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['Zipcode',   0.5],
+                    ['Has Visited',     0.5],
+                    ['Is Visited Price High Or Low',  0.5],
+                    ['Has Purchased', 0.5],
+                    ['Is Purchased Price High Or Low', 0.5],
+                    ['Stock', 0.5]
+                ]
+            }]
+        });
+	});
+	</script>
 </body>
 
 </html>
