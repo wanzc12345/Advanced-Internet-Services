@@ -32,4 +32,5 @@
 @property(nonatomic, retain)IBOutlet UITextField *row;
 @property(nonatomic, retain) NSObject<ViewDelegate> * delegate;
 
+
 @end

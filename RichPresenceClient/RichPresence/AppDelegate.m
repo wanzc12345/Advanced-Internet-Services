@@ -208,7 +208,7 @@
                 NSLog(@"进入后台进程循环");
                 [NSThread sleepForTimeInterval:1];
                 count++;
-                if(count>10)//每60s进行一次开启定位，刷新后台时间
+                if(count>10)//每10s进行一次开启定位，刷新后台时间
                 {
                     count=0;
                     [locationManager startUpdatingLocation];
