@@ -365,7 +365,7 @@
                             <div class="row">
                                 <div>
                                     <div class="table-responsive">
-                                        <table  class="table table-bordered table-hover table-striped">
+                                        <table  id = "informationtbody" class="table table-bordered table-hover table-striped">
                                             <thead>
                                                 <tr id = "informationhead">
                                                     <th>#</th>
@@ -383,7 +383,7 @@
                                                     <th>betteryLevel</th>
                                                 </tr>
                                             </thead>
-                                            <tbody id = "informationtbody">
+                                            <tbody>
                                                 
                                             </tbody>
                                         </table>

@@ -19,6 +19,7 @@ function specific(data){
 				  if (i == 0){
 					  continue;
 				  }
+				  debugger;
 				  var row = "<tr>";
 				  row += "'<td>'" + i + "'</td>'";
 				  for (var value in d[i]){
