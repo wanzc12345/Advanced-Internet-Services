@@ -75,6 +75,7 @@ function specific(data){
 			  var d = eval('('+response+')'); 
 			  var flag = 0;
 			  var line = "";
+			  $('#activitytimeline').empty();
 			  for (var i in d){
 				  
 				  if (flag == 0){

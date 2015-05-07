@@ -99,11 +99,12 @@
     NSError *error;
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://aisdzt.elasticbeanstalk.com/get_user_info?userID=%@", uid]]];
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSDictionary *Dic = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+    NSArray *array = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
     
-    self.firstnameLabel.text = [Dic objectForKey:@"firstName"];
-    self.lastnameLabel.text = [Dic objectForKey:@"lastName"];
-    self.addressLabel.text = [Dic objectForKey:@"homeAddress"];
+    NSDictionary* dic = [array objectAtIndex:0];
+    self.firstnameLabel.text = [dic objectForKey:@"firstName"];
+    self.lastnameLabel.text = [dic objectForKey:@"lastName"];
+    self.addressLabel.text = [dic objectForKey:@"homeAddress"];
     self.idLabel.text = uid;
 }
 
