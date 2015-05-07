@@ -67,6 +67,28 @@ function specific(data){
 			  }
 		  }
 	  });
+	  $.ajax({
+		  url: '../get_activity?userID=' + userID,
+		  type: 'GET',
+		  dataType: 'text',
+		  success: function(response) {
+			  var d = eval('('+response+')'); 
+			  var flag = 0;
+			  var line = "";
+			  for (var i in d){
+				  
+					  if (flag == 0){
+						  debugger;
+						  $('#activitytimeline').append('<li><div class="timeline-badge"><i class="fa fa-check"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
+						  flag = 1;
+					  }
+					  else{
+						  $('#activitytimeline').append('<li class="timeline-inverted"><div class="timeline-badge"><i class="fa fa-check"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
+						  flag = 0
+					  }
+			  }
+		  }
+	  });
 }
 function userLogin() {
 	//alert("haha");
