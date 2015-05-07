@@ -59,7 +59,7 @@ public class PredictActivity {
 	for (RichPresenceCollection rpc : sampleGroup) {
       float xAcc = rpc.xAcc;
       float yAcc = rpc.yAcc;
-	  float zAcc = rpc.zAcc;
+	  float zAcc = 0;
 	  float normAcc = Utils.getNorm3D(xAcc, yAcc, zAcc);
 	  normAccArray.add(normAcc);
 	  if (normAcc >= Config.stallingNormAccCut) {
@@ -129,11 +129,12 @@ public class PredictActivity {
 	// Other geolocation based if inactive
 	// The prediction depends on the prominence rank calculated by Google Map
 	GoogleMapService mapService = new GoogleMapService();
-	JSONObject jResponse = mapService.searchNearBy(latestLat, latestLng, Config.geolocationMaxError/2);
+	JSONObject jResponse = mapService.searchNearBy(latestLat, latestLng, Config.geolocationMaxError/3);
 	ArrayList<GooglePlace> placeList = GoogleMapService.getPlaceArray(jResponse);
 	for (GooglePlace place : placeList) {
       ArrayList<String> types = place.typeList;
       for (String type : types) {
+    	System.out.println(type);
     	if (Config.GooglePlaceEatHS.contains(type)) {
     	  return new Pair<String, String>("eating", place.name);
     	} else if (Config.GooglePlaceShopHS.contains(type)) {
@@ -147,7 +148,21 @@ public class PredictActivity {
     	}
       }
 	}
+	if (placeList.size() >= 1) {
+	  String place = placeList.get(0).name;
+	  return new Pair<String, String>("Unknown", place);
+	}
 	
-	return null;
+	int count = 0; 
+	for (float accNorm : normAccArray) {
+	  if (accNorm >= Config.runningNormAccCut) {
+		count ++;
+	  }
+	}
+	if (count >= Config.sampleGroupSize/2) {
+	  return new Pair<String, String>("running", "Unknown");
+	}
+
+	return new Pair<String, String>("Unknown", "Unknown");
   }
 }
