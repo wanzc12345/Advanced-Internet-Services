@@ -3,6 +3,7 @@
  */
 function specific(data){
 	var userID = $('#user'+data).children()[0].text;
+	$('#dashboardtitle').text(userID);
 	  $.ajax({
 		  url: '../get_user_info?userID=' + userID,
 		  type: 'GET',
@@ -76,7 +77,6 @@ function specific(data){
 			  var flag = 0;
 			  var line = "";
 			  $('#activitytimeline').empty();
-			  debugger;
 			  for (var i in d){
 				  if (flag == 0){
 					  if (d[i]["activity"] == "eating"){
@@ -212,6 +212,19 @@ function specific(data){
 		  }
 	  });
 }
+
+function sendmessage(){
+	$.ajax({
+		url: 'http://localhost:8888/SimplePush/simplepush.php?message='+$('#btn-input').val(),
+		type: 'GET',
+		dataType: 'text',
+		success: function(response){
+			alert(response);
+		}
+	});
+	alert("Delivered!");
+}
+
 function userLogin() {
 	//alert("haha");
   var userID = $('#userID').val();

@@ -78,14 +78,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
+                            User List
                             <!-- /input-group -->
                         </li>
                          <% GetUsers gu = new GetUsers();
@@ -94,7 +87,7 @@
                             for (int i = 0; i < al.size(); i++){
                           %>
                         <li id="user<%out.print(i);%>">
-                            <a onclick = "specific(<%out.print(i);%>)" ><i class="nav nav-second-level"></i><% out.print(al.get(i)); %></a>
+                            <a onclick = "specific(<%out.print(i);%>)"><i class="nav nav-second-level"></i><% out.print(al.get(i)); %></a>
                         </li>
                         <% }%>
                     </ul>
@@ -107,7 +100,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard</h1>
+                    <h1 class="page-header" id="dashboardtitle">&#8592;Click user list to view</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -126,14 +119,7 @@
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Action</a>
-                                        </li>
-                                        <li><a href="#">Another action</a>
-                                        </li>
-                                        <li><a href="#">Something else here</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a>
+                                        <li><a onclick="location.reload();">Clear</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -157,14 +143,7 @@
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Action</a>
-                                        </li>
-                                        <li><a href="#">Another action</a>
-                                        </li>
-                                        <li><a href="#">Something else here</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a>
+                                        <li><a onclick="location.reload();">Clear</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -235,8 +214,6 @@
                             <div id = "deviceinformationlist" class="list-group">
        
                             </div>
-                            <!-- /.list-group -->
-                            <a href="#" class="btn btn-default btn-block">View All Alerts</a>
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -252,28 +229,13 @@
                                 </button>
                                 <ul class="dropdown-menu slidedown">
                                     <li>
-                                        <a href="#">
+                                        <a onclick="location.reload();">
                                             <i class="fa fa-refresh fa-fw"></i> Refresh
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-check-circle fa-fw"></i> Available
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-times fa-fw"></i> Busy
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-clock-o fa-fw"></i> Away
                                         </a>
                                     </li>
                                     <li class="divider"></li>
                                     <li>
-                                        <a href="#">
+                                        <a href="login.jsp">
                                             <i class="fa fa-sign-out fa-fw"></i> Sign Out
                                         </a>
                                     </li>
@@ -286,18 +248,25 @@
                             </ul>
                         </div>
                         <!-- /.panel-body -->
-                        <div class="panel-footer">
+                        
+                        <!-- /.panel-footer -->
+                    </div>
+                    <div class="chat-panel panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-comments fa-fw"></i>
+                            Push Notification
+                        </div>
+                    	<div class="panel-footer">
                             <div class="input-group">
                                 <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
                                 <span class="input-group-btn">
-                                    <button class="btn btn-warning btn-sm" id="btn-chat">
+                                    <button onclick="sendmessage()" class="btn btn-warning btn-sm" id="btn-chat">
                                         Push
                                     </button>
                                 </span>
                             </div>
                         </div>
-                        <!-- /.panel-footer -->
-                    </div>
+                  </div>
                     <!-- /.panel .chat-panel -->
                 </div>
                 <!-- /.col-lg-4 -->

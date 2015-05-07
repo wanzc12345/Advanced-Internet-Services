@@ -16,6 +16,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface ActivityViewController ()  <CLLocationManagerDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *LastNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *NameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *OsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *SpeedLabel;
@@ -87,17 +88,15 @@
     // Do any additional setup after loading the view.
     
     [self configureView];
-
-    
-
-    self.NameLabel.text = self.fid;
     
 
     NSError *error;
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://aisdzt.elasticbeanstalk.com/get_user_info?userID=%@", self.fid]]];
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSDictionary *Dic = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+    NSArray *array = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
 
+    if([array count]>1){
+    NSDictionary* Dic = [array objectAtIndex:1];
     NSString* temp1 = [Dic objectForKey:@"OSType"];
     NSString* temp2 = [Dic objectForKey:@"OSVersion"];
     NSString* temp3;
@@ -114,10 +113,13 @@
     temp1 = [Dic objectForKey:@"latitude"];
     temp2 = [Dic objectForKey:@"longitude"];
     self.LocationLabel.text = [temp1 stringByAppendingString:temp2];
-    self.AddressLabel.text = [Dic objectForKey:@"homeAddre"];
+    
+    Dic = [array objectAtIndex:0];
+        self.NameLabel.text = [Dic objectForKey:@"firstName"];
+        self.LastNameLabel.text = [Dic objectForKey:@"lastName"];
     
     NSLog([NSString stringWithUTF8String:[response bytes]]);
-    
+    }
     
 
 }

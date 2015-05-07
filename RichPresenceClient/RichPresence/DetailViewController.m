@@ -96,54 +96,64 @@
     NSError *error;
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://aisdzt.elasticbeanstalk.com/get_user_info?userID=%@", self.friendid]]];
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSDictionary *Dic = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
-
+    NSArray *array = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+    
     self.ProfileImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", self.friendid]];
+    
+    if([array count]!=0){
+    NSDictionary* Dic = [array objectAtIndex:0];
+
     self.NameLabel.text = [NSString stringWithFormat:@"%@ %@", [Dic objectForKey:@"firstName"], [Dic objectForKey:@"lastName"]];
     
 //    ActivityViewController* act;
 //    act.friendid = self.friendid.text;
    // NSString* bbb = _friendid.text;
     
-    int value = (arc4random() % 8) + 1;
-    switch (value) {
-        case 1:
-            self.activityImage.image = [UIImage imageNamed:@"eating.png"];
-            self.activityLabel.text = @"Eating";
-            break;
-        case 2:
-            self.activityImage.image = [UIImage imageNamed:@"entertainment.png"];
-            self.activityLabel.text = @"Entertainment";
-            break;
-        case 3:
-            self.activityImage.image = [UIImage imageNamed:@"intransit.png"];
-            self.activityLabel.text = @"In Transit";
-            break;
-        case 4:
-            self.activityImage.image = [UIImage imageNamed:@"running.png"];
-            self.activityLabel.text = @"Running";
-            break;
-        case 5:
-            self.activityImage.image = [UIImage imageNamed:@"shop.png"];
-            self.activityLabel.text = @"Shopping";
-            break;
-        case 6:
-            self.activityImage.image = [UIImage imageNamed:@"sleeping.png"];
-            self.activityLabel.text = @"Sleeping";
-            break;
-        case 7:
-            self.activityImage.image = [UIImage imageNamed:@"walking.png"];
-            self.activityLabel.text = @"Walking";
-            break;
-        case 8:
-            self.activityImage.image = [UIImage imageNamed:@"worship.png"];
-            self.activityLabel.text = @"Worshiping";
-            break;
-            
-        default:
-            break;
-    }
+        NSError *error;
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://aisdzt.elasticbeanstalk.com/get_activity?userID=%@", self.friendid]]];
+        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        NSArray *array = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
     
+        if([array count]!=0){
+            NSDictionary* Dic = [array objectAtIndex:0];
+            if([[Dic objectForKey:@"activity"] hasPrefix:@"eating"]){
+                self.activityImage.image = [UIImage imageNamed:@"eating.png"];
+                self.activityLabel.text = @"Eating";
+            }
+            if([[Dic objectForKey:@"activity"] hasPrefix:@"entertaining"]){
+                self.activityImage.image = [UIImage imageNamed:@"entertainment.png"];
+                self.activityLabel.text = @"Entertainment";
+            }
+            if([[Dic objectForKey:@"activity"] hasPrefix:@"intransit"]){
+                self.activityImage.image = [UIImage imageNamed:@"intransit.png"];
+                self.activityLabel.text = @"In Transit";
+            }
+            if([[Dic objectForKey:@"activity"] hasPrefix:@"running"]){
+                self.activityImage.image = [UIImage imageNamed:@"running.png"];
+                self.activityLabel.text = @"Running";
+            }
+            if([[Dic objectForKey:@"activity"] hasPrefix:@"shopping"]){
+                self.activityImage.image = [UIImage imageNamed:@"shop.png"];
+                self.activityLabel.text = @"Shopping";
+            }
+            if([[Dic objectForKey:@"activity"] hasPrefix:@"sleeping"]){
+                self.activityImage.image = [UIImage imageNamed:@"sleeping.png"];
+                self.activityLabel.text = @"Sleeping";
+            }
+            if([[Dic objectForKey:@"activity"] hasPrefix:@"walking"]){
+                self.activityImage.image = [UIImage imageNamed:@"walking.png"];
+                self.activityLabel.text = @"Walking";
+            }
+            if([[Dic objectForKey:@"activity"] hasPrefix:@"worshiping"]){
+                self.activityImage.image = [UIImage imageNamed:@"worship.png"];
+                self.activityLabel.text = @"Worshiping";
+            }
+            if([[Dic objectForKey:@"activity"] hasPrefix:@"working"]){
+                self.activityImage.image = [UIImage imageNamed:@"working.png"];
+                self.activityLabel.text = @"Working";
+            }
+        }
+    }
 
     
 }

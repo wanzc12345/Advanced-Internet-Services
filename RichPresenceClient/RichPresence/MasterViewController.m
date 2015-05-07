@@ -138,7 +138,18 @@
 
     NSDate *object = self.objects[indexPath.row];
     cell.textLabel.text = [object description];
-    cell.detailTextLabel.text = @"In a shower";
+    
+    //get activity
+    NSError *error;
+    NSString *url =[NSString stringWithFormat:@"http://aisdzt.elasticbeanstalk.com/get_activity?userID=%@", [object description]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSArray *array = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+    if([array count]!=0)
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", [[array objectAtIndex:0] objectForKey:@"activity"], [[array objectAtIndex:0] objectForKey:@"timestamp"]];
+    else
+        cell.detailTextLabel.text = @"";
+    
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.detailTextLabel.textColor = [UIColor yellowColor];
     cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", self.objects[indexPath.row]]];
@@ -177,36 +188,6 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
 }
-
-
-
-/*- (void) Next
-{
-    DetailViewController *next = [[DetailViewController alloc]initWithNibName:@"DetailViewController" bundle:[NSBundle mainBundle]];//初始化下一個界面
-    next.delegate = self;//將這個類中的self傳遞给NextViewController類的delegate
-    /*
-     這一句話是最重要的，delegate 是在NectViewController這個界面中定義好的 代理類的對象
-     NSObject<ViewDelegate> *delegate;
-     @property(nonatomic,assign)NSObject<ViewDelegate> *delegate;
-     
-     通過 next.delegate = self; 這句話，给人的感覺就好像是 把第二個類中的 delegate 初始化了一样，也使得這兩個類通過代理類連接了起來
-     這样，在第二個類中 就可以用delegate這個代理類的對象去調用它自己的方法來進行賦值（在返回上一個頁面的時候操作）
-     - (void) Back//點擊 back 的方法
-     {
-     [delegate passValue:self.nameText.text];//通過delegate調用代理方法
-     [self dismissModalViewControllerAnimated:YES];
-     }
-     這样呢，就相當於passValue這個方法中的参數存儲了 數值
-     
-     然後在第一個類中 去實現這個方法就可以得到從第二個類傳過來的數值了
-     - (void)passValue:(NSString *)value
-     {
-     self.nameLabel.text = value;//把數值在label中顯示出來
-     }
-     
-    [self presentModalViewController:next animated:YES];
-}
-*/
 
 - (void)passValue:(NSString *)value
 {

@@ -43,7 +43,7 @@
     
     __weak typeof(self) selfRef = self;
     
-    self.expirationHandler = ^{  //创建后台自唤醒，当180s时间结束的时候系统会调用这里面的方法
+    self.expirationHandler = ^{
         [app endBackgroundTask:selfRef.bgTask];
         selfRef.bgTask = UIBackgroundTaskInvalid;
         selfRef.bgTask = [app beginBackgroundTaskWithExpirationHandler:selfRef.expirationHandler];
@@ -52,7 +52,7 @@
         while(selfRef.jobExpired)
         {
             // spin while we wait for the task to actually end.
-            NSLog(@"等待180s循环进程的结束");
+            NSLog(@"wait 180s loop end");
             [NSThread sleepForTimeInterval:1];
         }
         // Restart the background task so we can run forever.
@@ -93,7 +93,7 @@
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
-    if(login)//当登陆状态才启动后台操作
+    if(login)
     {
         self.bgTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:self.expirationHandler];
         NSLog(@"Entered background");
@@ -109,7 +109,7 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
     NSLog(@"App is active");
-    [UIApplication sharedApplication].applicationIconBadgeNumber=0;//取消应用程序通知脚标
+    [UIApplication sharedApplication].applicationIconBadgeNumber=0;
     [locationManager stopUpdatingLocation];
     self.background = NO;
 }
@@ -173,8 +173,9 @@
     NSError *error;
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://aisdzt.elasticbeanstalk.com/get_user_info?userID=%@", uid]]];
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSDictionary *Dic = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+    NSArray *array = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
     
+    NSDictionary* Dic = [array objectAtIndex:0];
     self.firstName = [Dic objectForKey:@"firstName"];
     self.lastName = [Dic objectForKey:@"lastName"];
     self.add = [Dic objectForKey:@"homeAddress"];
@@ -190,49 +191,81 @@
 - (void)startBackgroundTask
 {
     NSLog(@"Restarting task");
-    if(login)//当登陆状态才进入后台循环
+    if(login)
     {
         // Start the long-running task.
-        NSLog(@"登录状态后台进程开启");
+        NSLog(@"background task started");
         
         // When the job expires it still keeps running since we never exited it. Thus have the expiration handler
         // set a flag that the job expired and use that to exit the while loop and end the task.
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
             NSInteger count=0;
-            BOOL NoticeNoBackground=false;//只通知一次标志位
-            BOOL FlushBackgroundTime=false;//只通知一次标志位
-            locationManager.distanceFilter = kCLDistanceFilterNone;//任何运动均接受，任何运动将会触发定位更新
-            locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;//定位精度
+            BOOL NoticeNoBackground=false;
+            BOOL FlushBackgroundTime=false;
+            locationManager.distanceFilter = kCLDistanceFilterNone;
+            locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+            
+            NSString *post = @"";
+            [locationManager startUpdatingLocation];
+            NSLog(@"recording location");
+            [NSThread sleepForTimeInterval:1];
+            [self getInformation];
+            [locationManager stopUpdatingLocation];
+            NSLog(@"location recorded");
+            FlushBackgroundTime=false;
+            
+            NSTimeInterval curTime = [[NSDate date] timeIntervalSince1970];
+            self.timestamp = [NSString stringWithFormat:@"%ld",lroundf(curTime*1000)];
+            
+            post = [post stringByAppendingString: [NSString stringWithFormat:@"{\"userID\":\"%@\",\"timestamp\":\"%@\",\"latitude\":\"%@\",\"longitude\":\"%@\",\"xAcc\":\"%@\",\"yAcc\":\"%@\",\"zAcc\":\"%@\", \"volume\":\"%@\",\"brightness\":\"%@\",\"batteryLevel\":\"%@\",\"OSType\":\"%@\",\"OSVersion\":\"%@\",\"serialNumber\":\"%@\"}", self.userId, self.timestamp, self.latitude, self.longitude, self.accX, self.accY, self.accZ, self.volume, self.brs, self.batLevel, self.deviceName, self.phoneVersion, self.sn]];
+            
             while(self.background && !self.jobExpired)
             {
                 
-                NSLog(@"进入后台进程循环");
+                NSLog(@"enter background task loop");
                 [NSThread sleepForTimeInterval:1];
                 count++;
-                if(count>20)//每10s进行一次开启定位，刷新后台时间
+                if(count>20)
                 {
                     count=0;
                     int numofSent = 1;
-                    NSString *post = @"#dean#";
-                    while (numofSent <= 5) {
+                    
+                    NSString *post = @"";
+                    [locationManager startUpdatingLocation];
+                    NSLog(@"start recording location");
+                    [NSThread sleepForTimeInterval:1];
+                    [self getInformation];
+                    [locationManager stopUpdatingLocation];
+                    NSLog(@"stop recording location");
+                    FlushBackgroundTime=false;
+                    
+                    NSTimeInterval curTime = [[NSDate date] timeIntervalSince1970];
+                    self.timestamp = [NSString stringWithFormat:@"%ld",lroundf(curTime*1000)];
+                    
+                    post = [post stringByAppendingString: [NSString stringWithFormat:@"{\"userID\":\"%@\",\"timestamp\":\"%@\",\"latitude\":\"%@\",\"longitude\":\"%@\",\"xAcc\":\"%@\",\"yAcc\":\"%@\",\"zAcc\":\"%@\", \"volume\":\"%@\",\"brightness\":\"%@\",\"batteryLevel\":\"%@\",\"OSType\":\"%@\",\"OSVersion\":\"%@\",\"serialNumber\":\"%@\"}", self.userId, self.timestamp, self.latitude, self.longitude, self.accX, self.accY, self.accZ, self.volume, self.brs, self.batLevel, self.deviceName, self.phoneVersion, self.sn]];
+                    
+                    while (numofSent <= 4) {
                         [locationManager startUpdatingLocation];
-                        NSLog(@"开始位置服务");
+                        NSLog(@"start recording location");
                         [NSThread sleepForTimeInterval:1];
                         [self getInformation];
                         [locationManager stopUpdatingLocation];
-                        NSLog(@"停止位置服务");
+                        NSLog(@"stop recording location");
                         FlushBackgroundTime=false;
                         
+                        [NSThread sleepForTimeInterval:0.1];
                         NSTimeInterval curTime = [[NSDate date] timeIntervalSince1970];
-                        self.timestamp = [NSString stringWithFormat:@"%ld",lroundf(curTime)];
+                        NSLog(@"current timestamp:%f", curTime);
+                        self.timestamp = [NSString stringWithFormat:@"%f", curTime*1000];
+                        self.timestamp = [self.timestamp substringToIndex:13];
                         
+                        NSLog(@"saved timestamp:%@", self.timestamp);
+                        post = [post stringByAppendingString: @"#dean#"];
                         
                         post = [post stringByAppendingString: [NSString stringWithFormat:@"{\"userID\":\"%@\",\"timestamp\":\"%@\",\"latitude\":\"%@\",\"longitude\":\"%@\",\"xAcc\":\"%@\",\"yAcc\":\"%@\",\"zAcc\":\"%@\", \"volume\":\"%@\",\"brightness\":\"%@\",\"batteryLevel\":\"%@\",\"OSType\":\"%@\",\"OSVersion\":\"%@\",\"serialNumber\":\"%@\"}", self.userId, self.timestamp, self.latitude, self.longitude, self.accX, self.accY, self.accZ, self.volume, self.brs, self.batLevel, self.deviceName, self.phoneVersion, self.sn]];
-                        post = [post stringByAppendingString: @"#dean#"];
                         
                         numofSent ++;
                     }
-                    NSLog(post);
                     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
                     NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long) [postData length]];
                     NSMutableURLRequest *request_pst = [[NSMutableURLRequest alloc] init];
@@ -247,32 +280,29 @@
                     NSLog(@"updata information from background reply: %@", requestReply);
                     
                     UIAlertView *errorAlert = [[UIAlertView alloc]
-                                               initWithTitle:@"Error" message:requestReply delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                               initWithTitle:@"Guess you just" message:requestReply delegate:nil cancelButtonTitle:@"Right" otherButtonTitles:nil];
                     [errorAlert show];
                     
                     
                     
                 }
-                if(!login)//未登录或者掉线状态下关闭后台
+                if(!login)
                 {
-                    NSLog(@"保持在线进程失效，退出后台进程");
-                    //[InterfaceFuncation ShowLocalNotification:@"保持在线失效，登录已被注销，请重新登录"];
+                    NSLog(@"exiting backgroun task");
                     [[UIApplication sharedApplication] endBackgroundTask:self.bgTask];
-                    return;//退出循环
+                    return;//exit loop
                 }
                 NSTimeInterval backgroundTimeRemaining = [[UIApplication sharedApplication] backgroundTimeRemaining];
                 NSLog(@"Background Time Remaining = %.02f Seconds",backgroundTimeRemaining);
                 if(backgroundTimeRemaining<30&&NoticeNoBackground==false)
                 {
-                    //[InterfaceFuncation ShowLocalNotification:@"向系统申请长时间保持后台失败，请结束客户端重新登录"];
                     NoticeNoBackground=true;
                 }
-                //测试后台时间刷新
+                //testing time refresh
                 if(backgroundTimeRemaining>200&&FlushBackgroundTime==false)
                 {
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"MessageUpdate" object:@"刷新后台时间成功\n"];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"MessageUpdate" object:@"time refresh succeed\n"];
                     FlushBackgroundTime=true;
-                    //[InterfaceFuncation ShowLocalNotification:@"刷新后台时间成功"];
                 }
             }
             self.jobExpired = NO;
@@ -288,20 +318,19 @@
 }
 
 
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error//当定位服务不可用出错时，系统会自动调用该函数
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
-    NSLog(@"定位服务出错");
-    if([error code]==kCLErrorDenied)//通过error的code来判断错误类型
+    NSLog(@"location error");
+    if([error code]==kCLErrorDenied)
     {
         //Access denied by user
-        NSLog(@"定位服务未打开");
-        //[InterfaceFuncation ShowAlertWithMessage:@"错误" AlertMessage:@"未开启定位服务\n客户端保持后台功能需要调用系统的位置服务\n请到设置中打开位置服务" ButtonTitle:@"好"];
+        NSLog(@"location not opened");
     }
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations//当用户位置改变时，系统会自动调用，这里必须写一点儿代码，否则后台时间刷新不管用
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    NSLog(@"位置改变，必须做点儿事情才能刷新后台时间");
+    NSLog(@"location changed");
     CLLocation *loc = [locations lastObject];
     //NSTimeInterval backgroundTimeRemaining = [[UIApplication sharedApplication] backgroundTimeRemaining];
     //NSLog(@"Background Time Remaining = %.02f Seconds",backgroundTimeRemaining);

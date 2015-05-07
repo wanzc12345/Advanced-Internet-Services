@@ -45,6 +45,10 @@
 		EEA848F41AF85FC600E582D9 /* cmy.png in Resources */ = {isa = PBXBuildFile; fileRef = EEA848EF1AF85FC600E582D9 /* cmy.png */; };
 		EEA848F51AF85FC600E582D9 /* zw2275@columbia.edu.png in Resources */ = {isa = PBXBuildFile; fileRef = EEA848F01AF85FC600E582D9 /* zw2275@columbia.edu.png */; };
 		EEA848F71AF8619F00E582D9 /* qy2152@columbia.edu.png in Resources */ = {isa = PBXBuildFile; fileRef = EEA848F61AF8619F00E582D9 /* qy2152@columbia.edu.png */; };
+		EEC1C76F1AFB379400ED332E /* qwer.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC1C76E1AFB379400ED332E /* qwer.png */; };
+		EEC1C7711AFB379E00ED332E /* working.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC1C7701AFB379E00ED332E /* working.png */; };
+		EEEB63E41AFBC58800B95772 /* applogo.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEB63E31AFBC58800B95772 /* applogo.png */; };
+		EEEB63E61AFBCB7400B95772 /* unrecorded.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EEEB63E51AFBCB7400B95772 /* unrecorded.jpg */; };
 		EEF4DC181AF98566006CCF82 /* running.png in Resources */ = {isa = PBXBuildFile; fileRef = EEF4DC171AF98566006CCF82 /* running.png */; };
 		EEF4DC1A1AF9870C006CCF82 /* eating.png in Resources */ = {isa = PBXBuildFile; fileRef = EEF4DC191AF9870C006CCF82 /* eating.png */; };
 		EEF4DC1D1AF98799006CCF82 /* sleeping.png in Resources */ = {isa = PBXBuildFile; fileRef = EEF4DC1B1AF98799006CCF82 /* sleeping.png */; };
@@ -117,6 +121,10 @@
 		EEA848EF1AF85FC600E582D9 /* cmy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cmy.png; sourceTree = SOURCE_ROOT; };
 		EEA848F01AF85FC600E582D9 /* zw2275@columbia.edu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zw2275@columbia.edu.png"; sourceTree = SOURCE_ROOT; };
 		EEA848F61AF8619F00E582D9 /* qy2152@columbia.edu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qy2152@columbia.edu.png"; sourceTree = SOURCE_ROOT; };
+		EEC1C76E1AFB379400ED332E /* qwer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qwer.png; sourceTree = SOURCE_ROOT; };
+		EEC1C7701AFB379E00ED332E /* working.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = working.png; sourceTree = SOURCE_ROOT; };
+		EEEB63E31AFBC58800B95772 /* applogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = applogo.png; sourceTree = SOURCE_ROOT; };
+		EEEB63E51AFBCB7400B95772 /* unrecorded.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = unrecorded.jpg; sourceTree = SOURCE_ROOT; };
 		EEF4DC171AF98566006CCF82 /* running.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = running.png; sourceTree = SOURCE_ROOT; };
 		EEF4DC191AF9870C006CCF82 /* eating.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eating.png; sourceTree = SOURCE_ROOT; };
 		EEF4DC1B1AF98799006CCF82 /* sleeping.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sleeping.png; sourceTree = SOURCE_ROOT; };
@@ -203,6 +211,10 @@
 		EE83EE271A9A686C006B3BBF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EEEB63E51AFBCB7400B95772 /* unrecorded.jpg */,
+				EEEB63E31AFBC58800B95772 /* applogo.png */,
+				EEC1C7701AFB379E00ED332E /* working.png */,
+				EEC1C76E1AFB379400ED332E /* qwer.png */,
 				EE6D474B1AFAA0840009AD9B /* detailbutton.png */,
 				EEF4DC251AF98981006CCF82 /* shop.png */,
 				EEF4DC231AF9890C006CCF82 /* entertainment.png */,
@@ -343,11 +355,14 @@
 				EE85F2F81ACE25770003A9A3 /* back4.png in Resources */,
 				EE71CC0F1ACCD15B00DEA449 /* orange button.png in Resources */,
 				EEA848E31AF84EAA00E582D9 /* profile.jpg in Resources */,
+				EEC1C7711AFB379E00ED332E /* working.png in Resources */,
 				EE85F2FA1ACE2D8A0003A9A3 /* back5.png in Resources */,
 				EE71CC171ACCDE1700DEA449 /* back3.jpeg in Resources */,
 				EE5C1CF51A9B92B3003AFF8D /* splash.png in Resources */,
 				EE71CC131ACCD55A00DEA449 /* back2.jpg in Resources */,
 				EE6D474C1AFAA0840009AD9B /* detailbutton.png in Resources */,
+				EEC1C76F1AFB379400ED332E /* qwer.png in Resources */,
+				EEEB63E41AFBC58800B95772 /* applogo.png in Resources */,
 				EEF4DC241AF9890C006CCF82 /* entertainment.png in Resources */,
 				EE83EE361A9A686C006B3BBF /* Main.storyboard in Resources */,
 				EE85F2FE1ACE3B2E0003A9A3 /* back6.png in Resources */,
@@ -356,6 +371,7 @@
 				EEF4DC211AF98845006CCF82 /* worship.png in Resources */,
 				EE83EE3B1A9A686C006B3BBF /* LaunchScreen.xib in Resources */,
 				EEA848F71AF8619F00E582D9 /* qy2152@columbia.edu.png in Resources */,
+				EEEB63E61AFBCB7400B95772 /* unrecorded.jpg in Resources */,
 				EE85F3001ACE3EDB0003A9A3 /* logo.png in Resources */,
 				EE71CC0E1ACCD15B00DEA449 /* blankbutton.png in Resources */,
 				EEF4DC1A1AF9870C006CCF82 /* eating.png in Resources */,
