@@ -82,8 +82,8 @@ function richPresenceFormSubmit() {
 		serialNumber: serialNumber
 	    }
 	  );
-	
-	data = data + "#dean#" + data + "#dean#" + data + "#dean#" + data + "#dean#" + data; 
+	data = '{"userID":"qy2152@columbia.edu","timestamp":"1430970496","latitude":"37.332331","longitude":"-122.031219","xAcc":"0","yAcc":"0","zAcc":"0", "volume":"1.000000","brightness":"0.50","batteryLevel":"-1.000000","OSType":"iPhone OS","OSVersion":"8.3","serialNumber":"C02N2FU0G3QD"}#dean#{"userID":"qy2152@columbia.edu","timestamp":"1430970496","latitude":"37.332331","longitude":"-122.031219","xAcc":"0","yAcc":"0","zAcc":"0", "volume":"1.000000","brightness":"0.50","batteryLevel":"-1.000000","OSType":"iPhone OS","OSVersion":"8.3","serialNumber":"C02N2FU0G3QD"}#dean#{"userID":"qy2152@columbia.edu","timestamp":"1430970496","latitude":"37.332331","longitude":"-122.031219","xAcc":"0","yAcc":"0","zAcc":"0", "volume":"1.000000","brightness":"0.50","batteryLevel":"-1.000000","OSType":"iPhone OS","OSVersion":"8.3","serialNumber":"C02N2FU0G3QD"}#dean#{"userID":"qy2152@columbia.edu","timestamp":"1430970496","latitude":"37.332331","longitude":"-122.031219","xAcc":"0","yAcc":"0","zAcc":"0", "volume":"1.000000","brightness":"0.50","batteryLevel":"-1.000000","OSType":"iPhone OS","OSVersion":"8.3","serialNumber":"C02N2FU0G3QD"}#dean#{"userID":"qy2152@columbia.edu","timestamp":"1430970496","latitude":"37.332331","longitude":"-122.031219","xAcc":"0","yAcc":"0","zAcc":"0", "volume":"1.000000","brightness":"0.50","batteryLevel":"-1.000000","OSType":"iPhone OS","OSVersion":"8.3","serialNumber":"C02N2FU0G3QD"}';
+	//data = data + "#dean#" + data + "#dean#" + data + "#dean#" + data + "#dean#" + data; 
 	$.ajax({
 		url: 'upload_rich_presence',
 		type: 'POST',
