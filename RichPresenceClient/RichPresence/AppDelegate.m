@@ -194,9 +194,9 @@
     {
         // Start the long-running task.
         NSLog(@"登录状态后台进程开启");
-
-            // When the job expires it still keeps running since we never exited it. Thus have the expiration handler
-            // set a flag that the job expired and use that to exit the while loop and end the task.
+        
+        // When the job expires it still keeps running since we never exited it. Thus have the expiration handler
+        // set a flag that the job expired and use that to exit the while loop and end the task.
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
             NSInteger count=0;
             BOOL NoticeNoBackground=false;//只通知一次标志位
@@ -205,25 +205,34 @@
             locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;//定位精度
             while(self.background && !self.jobExpired)
             {
+                
                 NSLog(@"进入后台进程循环");
                 [NSThread sleepForTimeInterval:1];
                 count++;
-                if(count>10)//每10s进行一次开启定位，刷新后台时间
+                if(count>20)//每10s进行一次开启定位，刷新后台时间
                 {
                     count=0;
-                    [locationManager startUpdatingLocation];
-                    NSLog(@"开始位置服务");
-                    [NSThread sleepForTimeInterval:1];
-                    [self getInformation];
-                    [locationManager stopUpdatingLocation];
-                    NSLog(@"停止位置服务");
-                    FlushBackgroundTime=false;
-                    
-                    NSTimeInterval curTime = [[NSDate date] timeIntervalSince1970];
-                    self.timestamp = [NSString stringWithFormat:@"%ld",lroundf(curTime)];
-                    
-                    
-                    NSString *post = [NSString stringWithFormat:@"{\"userID\":\"%@\",\"timestamp\":\"%@\",\"latitude\":\"%@\",\"longitude\":\"%@\",\"xAcc\":\"%@\",\"yAcc\":\"%@\",\"zAcc\":\"%@\", \"volume\":\"%@\",\"brightness\":\"%@\",\"batteryLevel\":\"%@\",\"OSType\":\"%@\",\"OSVersion\":\"%@\",\"serialNumber\":\"%@\"}", self.userId, self.timestamp, self.latitude, self.longitude, self.accX, self.accY, self.accZ, self.volume, self.brs, self.batLevel, self.deviceName, self.phoneVersion, self.sn];
+                    int numofSent = 1;
+                    NSString *post = @"#dean#";
+                    while (numofSent <= 5) {
+                        [locationManager startUpdatingLocation];
+                        NSLog(@"开始位置服务");
+                        [NSThread sleepForTimeInterval:1];
+                        [self getInformation];
+                        [locationManager stopUpdatingLocation];
+                        NSLog(@"停止位置服务");
+                        FlushBackgroundTime=false;
+                        
+                        NSTimeInterval curTime = [[NSDate date] timeIntervalSince1970];
+                        self.timestamp = [NSString stringWithFormat:@"%ld",lroundf(curTime)];
+                        
+                        
+                        post = [post stringByAppendingString: [NSString stringWithFormat:@"{\"userID\":\"%@\",\"timestamp\":\"%@\",\"latitude\":\"%@\",\"longitude\":\"%@\",\"xAcc\":\"%@\",\"yAcc\":\"%@\",\"zAcc\":\"%@\", \"volume\":\"%@\",\"brightness\":\"%@\",\"batteryLevel\":\"%@\",\"OSType\":\"%@\",\"OSVersion\":\"%@\",\"serialNumber\":\"%@\"}", self.userId, self.timestamp, self.latitude, self.longitude, self.accX, self.accY, self.accZ, self.volume, self.brs, self.batLevel, self.deviceName, self.phoneVersion, self.sn]];
+                        post = [post stringByAppendingString: @"#dean#"];
+                        
+                        numofSent ++;
+                    }
+                    NSLog(post);
                     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
                     NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long) [postData length]];
                     NSMutableURLRequest *request_pst = [[NSMutableURLRequest alloc] init];
@@ -240,7 +249,8 @@
                     UIAlertView *errorAlert = [[UIAlertView alloc]
                                                initWithTitle:@"Error" message:requestReply delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                     [errorAlert show];
-
+                    
+                    
                     
                 }
                 if(!login)//未登录或者掉线状态下关闭后台
