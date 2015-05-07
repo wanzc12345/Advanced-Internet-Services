@@ -76,8 +76,8 @@ function specific(data){
 			  var flag = 0;
 			  var line = "";
 			  $('#activitytimeline').empty();
+			  debugger;
 			  for (var i in d){
-				  
 				  if (flag == 0){
 					  if (d[i]["activity"] == "eating"){
 					  $('#activitytimeline').append('<li><div class="timeline-badge"><i class="fa fa-cutlery" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
@@ -92,12 +92,13 @@ function specific(data){
 						  $('#activitytimeline').append('<li><div class="timeline-badge"><i class="fa fa-check" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
 					  }
 					  else if (d[i]["activity"] == "sleeping"){
-						  $('#activitytimeline').append('<li><div class="timeline-badge"><i class="fa fa-bed" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
+						  $('#activitytimeline').append('<li><div class="timeline-badge"><i class="fa fa-eye" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
 					  }
 					  else if (d[i]["activity"] == "walking"){
 						  $('#activitytimeline').append('<li><div class="timeline-badge"><i class="fa fa-paper-plane" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
 					  }
 					  else if (d[i]["activity"] == "working-studying"){
+						  debugger;
 						  $('#activitytimeline').append('<li><div class="timeline-badge"><i class="fa fa-graduation-cap" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
 					  }
 					  else if (d[i]["activity"] == "worshiping"){
@@ -122,7 +123,7 @@ function specific(data){
 							  $('#activitytimeline').append('<li class="timeline-inverted"><div class="timeline-badge"><i class="fa fa-check" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
 						  }
 						  else if (d[i]["activity"] == "sleeping"){
-							  $('#activitytimeline').append('<li class="timeline-inverted"><div class="timeline-badge"><i class="fa fa-bed" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
+							  $('#activitytimeline').append('<li class="timeline-inverted"><div class="timeline-badge"><i class="fa fa-eye" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
 						  }
 						  else if (d[i]["activity"] == "walking"){
 							  $('#activitytimeline').append('<li class="timeline-inverted"><div class="timeline-badge"><i class="fa fa-paper-plane" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
@@ -139,6 +140,76 @@ function specific(data){
 					  flag = 0
 				  }
 			  }
+		  }
+	  });
+	  $.ajax({
+		  url: '../count_activity?userID=' + userID,
+		  type: 'GET',
+		  dataType: 'text',
+		  success: function(response) {
+			  var d = eval('('+response+')'); 
+			  debugger;
+			  $('#container1').highcharts({
+			        chart: {
+			            type: 'column'
+			        },
+			        title: {
+			            text: 'Activities Column Chart'
+			        },
+			        xAxis: {
+			            categories: ['Eating', 'Entertaining', 'In-transit', 'Running', 'Sleeping', 'Walking', 'Working', 'Worshiping', 'Shopping']
+			        },
+			        credits: {
+			            enabled: false
+			        },
+			        series: [{
+			            name: 'Times',
+			            data: [d.eating, d.entertaining, d.transit, d.running, d.sleeping, d.walking, d.workingstudying, d.worshiping, d.shopping]
+			        }]
+			    });
+			  $('#container2').highcharts({
+		            chart: {
+		                plotBackgroundColor: null,
+		                plotBorderWidth: null,
+		                plotShadow: false
+		            },
+		            title: {
+		                text: 'Activity Percentage Pie Chart'
+		            },
+		            tooltip: {
+		                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+		            },
+		            plotOptions: {
+		                pie: {
+		                    allowPointSelect: true,
+		                    cursor: 'pointer',
+		                    dataLabels: {
+		                        enabled: false
+		                    },
+		                    showInLegend: true
+		                }
+		            },
+		            series: [{
+		                type: 'pie',
+		                name: 'percentage',
+		                data: [
+		                    ['Eating',   d.eating],
+		                    ['Entertaining', d.entertaining],
+		                    {
+		                        name: 'In-transit',
+		                        y: d.transit,
+		                        sliced: true,
+		                        selected: true
+		                    },
+		                    ['Running',   d.running],
+		                    ['Sleeping',     d.sleeping],
+		                    ['Walking',  d.walking],
+		                    ['Working', d.workingstudying],
+		                    ['Worshiping', d.worshiping],
+		                    ['Shopping', d.shopping]
+		                ]
+		            }]
+		        });
 		  }
 	  });
 }

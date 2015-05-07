@@ -49,6 +49,15 @@ public class CountActivity extends HttpServlet {
 		String query = "SELECT * from User_Activity_DB WHERE userID = " + "'" + userID + "'";
 		rs = stmt.executeQuery(query);
 		JSONObject userInfo = new JSONObject();
+		userInfo.put("eating", 0);
+		userInfo.put("walking", 0);
+		userInfo.put("working-studying", 0);
+		userInfo.put("sleeping", 0);
+		userInfo.put("in-transit", 0);
+		userInfo.put("worshiping", 0);
+		userInfo.put("shopping", 0);
+		userInfo.put("entertaining", 0);
+		userInfo.put("running", 0);
 		try {
 		  while(rs.next()) {
 			String activity = rs.getString("activity");
@@ -61,6 +70,12 @@ public class CountActivity extends HttpServlet {
 				userInfo.put(activity, 1);
 			}
 		  }
+		  int count = Integer.parseInt(userInfo.get("in-transit").toString());
+		  userInfo.remove("in-transit");
+		  userInfo.put("transit", count);
+		  count = Integer.parseInt(userInfo.get("working-studying").toString());
+		  userInfo.remove("working-studying");
+		  userInfo.put("workingstudying", count);
 		  response.getWriter().write(userInfo.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
