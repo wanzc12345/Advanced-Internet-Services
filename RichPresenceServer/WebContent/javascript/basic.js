@@ -14,7 +14,7 @@ function userLogin() {
 	    password : password	
 	  }),
 	  success: function(response) {
-	      alert(reponse);
+	      alert(response);
 	  }
   });
   return false;
@@ -37,6 +37,7 @@ function signUpFormSubmit() {
 	workAddr : workAddr
     }
   );
+  
   $.ajax({
 	  url: 'sign_up',
 	  type: 'POST',
@@ -51,11 +52,9 @@ function signUpFormSubmit() {
 
 
 function richPresenceFormSubmit() {
-	alert("get1");
 	var userID = document.richPresenceForm.userID.value;
 	//var timestamp = document.richPresenceForm.timestamp.value;
 	var timestamp = new Date().getTime().toString();
-	alert("get2");
 	var latitude = document.richPresenceForm.latitude.value;
 	var longitude = document.richPresenceForm.longitude.value;
 	var xAcc = document.richPresenceForm.xAcc.value;
@@ -67,7 +66,6 @@ function richPresenceFormSubmit() {
 	var OSType = document.richPresenceForm.OSType.value;
 	var OSVersion = document.richPresenceForm.OSVersion.value;
 	var serialNumber = document.richPresenceForm.serialNumber.value;
-	alert("get3");
 	var data = JSON.stringify({
 		userID: userID,
 		timestamp: timestamp,
@@ -85,6 +83,7 @@ function richPresenceFormSubmit() {
 	    }
 	  );
 	
+	data = data + "#dean#" + data + "#dean#" + data + "#dean#" + data + "#dean#" + data; 
 	$.ajax({
 		url: 'upload_rich_presence',
 		type: 'POST',
