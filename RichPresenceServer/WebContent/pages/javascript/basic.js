@@ -19,7 +19,6 @@ function specific(data){
 				  if (i == 0){
 					  continue;
 				  }
-				  debugger;
 				  var row = "<tr>";
 				  row += "'<td>'" + i + "'</td>'";
 				  for (var value in d[i]){
@@ -29,6 +28,43 @@ function specific(data){
 				  $('#informationtbody').append(row);
 			  }
 			 
+		  }
+	  });
+	  $.ajax({
+		  url: '../get_friends_list?userID='+userID,
+		  type: 'GET',
+		  dataType: 'text',
+		  success: function(response){
+			  $('#friendlist').empty();
+			  
+			  var list = jQuery.parseJSON(response);
+
+			  for(var i = 0; i<list.length; i++){
+				  $('#friendlist').append("<li class='"+(i%2==0?"left":"right")+" clearfix'>"+
+                                    "<span class='chat-img pull-"+(i%2==0?"left":"right")+"'>"+
+                                        "<img src='http://placehold.it/50/55C1E7/fff' alt='User Avatar' class='img-circle' />"+
+                                    "</span>"+
+                                    "<div class='chat-body clearfix'>"+
+                                        "<div class='header'>"+
+                                            "<strong class='primary-font'>"+list[i]+"</strong>"+
+                                            "<small class='pull-right text-muted'>"+
+                                            "</small>"+
+                                        "</div>"+
+                                        "<p id='"+list[i].replace('@', '').replace('.', '')+"'>"+
+                                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales."+
+                                       "</p>"+
+                                    "</div>"+
+                                "</li>");
+				  $.ajax({
+					 url: '../get_user_info?userID='+list[i],
+					 type: 'GET',
+					 dataType: 'text',
+					 success: function(response){
+						 var id = '#'+this.url.substr(this.url.indexOf("=")+1).replace('@', '').replace('.', '');
+						 $(id).text(response);
+					 }
+				  });
+			  }
 		  }
 	  });
 }

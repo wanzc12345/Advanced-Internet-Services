@@ -537,7 +537,7 @@
                     <div class="chat-panel panel panel-default">
                         <div class="panel-heading">
                             <i class="fa fa-comments fa-fw"></i>
-                            Chat
+                            Friends List
                             <div class="btn-group pull-right">
                                 <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-chevron-down"></i>
@@ -574,7 +574,7 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <ul class="chat">
+                            <ul id="friendlist" class="chat">
                                 <li class="left clearfix">
                                     <span class="chat-img pull-left">
                                         <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
