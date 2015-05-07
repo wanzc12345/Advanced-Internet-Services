@@ -6,13 +6,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import org.json.simple.JSONObject;
+import org.richPresence.utils.ConnectDB;
 
 /**
  * Servlet implementation class GetUserInfo
@@ -46,7 +46,6 @@ public class GetUserInfo extends HttpServlet {
 	  ResultSet rs1 = null;
 	  try {
 		stmt = conn.createStatement();
-		
 		String query = "SELECT * from User_Info_DB WHERE userID = " + "'" + userID + "'";
 		rs = stmt.executeQuery(query);
 		JSONObject userInfo = new JSONObject();
