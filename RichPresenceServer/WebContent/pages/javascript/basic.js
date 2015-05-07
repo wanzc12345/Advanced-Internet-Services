@@ -51,7 +51,6 @@ function specific(data){
                                             "</small>"+
                                         "</div>"+
                                         "<p id='"+list[i].replace('@', '').replace('.', '')+"'>"+
-                                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales."+
                                        "</p>"+
                                     "</div>"+
                                 "</li>");
@@ -61,7 +60,8 @@ function specific(data){
 					 dataType: 'text',
 					 success: function(response){
 						 var id = '#'+this.url.substr(this.url.indexOf("=")+1).replace('@', '').replace('.', '');
-						 $(id).text(response);
+						 var info = jQuery.parseJSON(response);
+						 $(id).text(info[0].firstName+" "+info[0].lastName+", "+info[0].homeAddress);
 					 }
 				  });
 			  }
