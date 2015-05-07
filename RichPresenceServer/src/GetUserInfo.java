@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.richPresence.utils.ConnectDB;
 
