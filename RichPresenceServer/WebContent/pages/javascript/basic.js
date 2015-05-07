@@ -42,7 +42,7 @@ function specific(data){
 			  for(var i = 0; i<list.length; i++){
 				  $('#friendlist').append("<li class='"+(i%2==0?"left":"right")+" clearfix'>"+
                                     "<span class='chat-img pull-"+(i%2==0?"left":"right")+"'>"+
-                                        "<img src='http://placehold.it/50/55C1E7/fff' alt='User Avatar' class='img-circle' />"+
+                                        "<img src='./" + list[i] + ".png' alt='User Avatar' class='img-circle' height='50' width='50'/>"+
                                     "</span>"+
                                     "<div class='chat-body clearfix'>"+
                                         "<div class='header'>"+
@@ -98,7 +98,6 @@ function specific(data){
 						  $('#activitytimeline').append('<li><div class="timeline-badge"><i class="fa fa-paper-plane" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
 					  }
 					  else if (d[i]["activity"] == "working-studying"){
-						  debugger;
 						  $('#activitytimeline').append('<li><div class="timeline-badge"><i class="fa fa-graduation-cap" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
 					  }
 					  else if (d[i]["activity"] == "worshiping"){
