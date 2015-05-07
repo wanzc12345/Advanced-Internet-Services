@@ -157,8 +157,12 @@
                 
             });
         }];
-    } else
+    } else{
         NSLog(@"not active");
+        self.accX = @"0";
+        self.accY = @"0";
+        self.accZ = @"0";
+    }
     
     double br = [[UIScreen mainScreen] brightness];
     self.brs = [NSString stringWithFormat:@"%.2f", br];
@@ -204,7 +208,7 @@
                 NSLog(@"进入后台进程循环");
                 [NSThread sleepForTimeInterval:1];
                 count++;
-                if(count>10)//每60s进行一次开启定位，刷新后台时间
+                if(count>10)//每10s进行一次开启定位，刷新后台时间
                 {
                     count=0;
                     [locationManager startUpdatingLocation];
@@ -216,26 +220,26 @@
                     FlushBackgroundTime=false;
                     
                     NSTimeInterval curTime = [[NSDate date] timeIntervalSince1970];
-                    self.timestamp = [NSString stringWithFormat:@"%lf",curTime];
+                    self.timestamp = [NSString stringWithFormat:@"%ld",lroundf(curTime)];
                     
                     
                     NSString *post = [NSString stringWithFormat:@"{\"userID\":\"%@\",\"timestamp\":\"%@\",\"latitude\":\"%@\",\"longitude\":\"%@\",\"xAcc\":\"%@\",\"yAcc\":\"%@\",\"zAcc\":\"%@\", \"volume\":\"%@\",\"brightness\":\"%@\",\"batteryLevel\":\"%@\",\"OSType\":\"%@\",\"OSVersion\":\"%@\",\"serialNumber\":\"%@\"}", self.userId, self.timestamp, self.latitude, self.longitude, self.accX, self.accY, self.accZ, self.volume, self.brs, self.batLevel, self.deviceName, self.phoneVersion, self.sn];
-//                    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-//                    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long) [postData length]];
-//                    NSMutableURLRequest *request_pst = [[NSMutableURLRequest alloc] init];
-//                    [request_pst setURL:[NSURL URLWithString:@"http://aisdzt.elasticbeanstalk.com/sign_up"]];
-//                    [request_pst setHTTPMethod:@"POST"];
-//                    [request_pst setValue:postLength forHTTPHeaderField:@"Content-Length"];
-//                    [request_pst setHTTPBody:postData];
-//                    NSURLResponse *requestResponse;
-//                    NSData *requestHandler = [NSURLConnection sendSynchronousRequest:request_pst returningResponse:&requestResponse error:nil];
-//                    NSString *requestReply = [[NSString alloc] initWithBytes:[requestHandler bytes] length:[requestHandler length] encoding:NSASCIIStringEncoding];
+                    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+                    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long) [postData length]];
+                    NSMutableURLRequest *request_pst = [[NSMutableURLRequest alloc] init];
+                    [request_pst setURL:[NSURL URLWithString:@"http://aisdzt.elasticbeanstalk.com/upload_rich_presence"]];
+                    [request_pst setHTTPMethod:@"POST"];
+                    [request_pst setValue:postLength forHTTPHeaderField:@"Content-Length"];
+                    [request_pst setHTTPBody:postData];
+                    NSURLResponse *requestResponse;
+                    NSData *requestHandler = [NSURLConnection sendSynchronousRequest:request_pst returningResponse:&requestResponse error:nil];
+                    NSString *requestReply = [[NSString alloc] initWithBytes:[requestHandler bytes] length:[requestHandler length] encoding:NSASCIIStringEncoding];
                     NSLog(post);
-//                    NSLog(@"updata information from background reply: %@", requestReply);
+                    NSLog(@"updata information from background reply: %@", requestReply);
                     
-//                    UIAlertView *errorAlert = [[UIAlertView alloc]
-//                                               initWithTitle:@"Error" message:requestReply delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//                    [errorAlert show];
+                    UIAlertView *errorAlert = [[UIAlertView alloc]
+                                               initWithTitle:@"Error" message:requestReply delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [errorAlert show];
 
                     
                 }

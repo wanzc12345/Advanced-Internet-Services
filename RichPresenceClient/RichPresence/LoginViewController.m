@@ -59,7 +59,7 @@
     NSString *requestReply = [[NSString alloc] initWithBytes:[requestHandler bytes] length:[requestHandler length] encoding:NSASCIIStringEncoding];
     NSLog(@"login request reply: %@", requestReply);
     
-    if([requestReply hasPrefix:@"welcome"]){
+    if([requestReply hasPrefix:@"true"]){
         
         //set current user to this user
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

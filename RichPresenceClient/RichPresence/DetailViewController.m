@@ -13,6 +13,7 @@
 //#import <GraphicsServices/GraphicsServices.h>
 #import <AVFoundation/AVAudioSession.h>
 #import <MediaPlayer/MediaPlayer.h>
+//#import "ActivityViewController.h"
 
 @interface DetailViewController () <CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *ProfileImage;
@@ -24,6 +25,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *LocationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *AccLabel;
 @property (weak, nonatomic) IBOutlet UILabel *BrightnessLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *activityImage;
+@property (weak, nonatomic) IBOutlet UILabel *activityLabel;
+
+
 
 //@property (weak, nonatomic) IBOutlet UIButton *jsonAnalizer;
 //@property (weak, nonatomic) IBOutlet UIButton *jsonAnalizer;
@@ -95,9 +100,63 @@
 
     self.ProfileImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", self.friendid]];
     self.NameLabel.text = [NSString stringWithFormat:@"%@ %@", [Dic objectForKey:@"firstName"], [Dic objectForKey:@"lastName"]];
+    
+//    ActivityViewController* act;
+//    act.friendid = self.friendid.text;
+   // NSString* bbb = _friendid.text;
+    
+    int value = (arc4random() % 8) + 1;
+    switch (value) {
+        case 1:
+            self.activityImage.image = [UIImage imageNamed:@"eating.png"];
+            self.activityLabel.text = @"Eating";
+            break;
+        case 2:
+            self.activityImage.image = [UIImage imageNamed:@"entertainment.png"];
+            self.activityLabel.text = @"Entertainment";
+            break;
+        case 3:
+            self.activityImage.image = [UIImage imageNamed:@"intransit.png"];
+            self.activityLabel.text = @"In Transit";
+            break;
+        case 4:
+            self.activityImage.image = [UIImage imageNamed:@"running.png"];
+            self.activityLabel.text = @"Running";
+            break;
+        case 5:
+            self.activityImage.image = [UIImage imageNamed:@"shop.png"];
+            self.activityLabel.text = @"Shopping";
+            break;
+        case 6:
+            self.activityImage.image = [UIImage imageNamed:@"sleeping.png"];
+            self.activityLabel.text = @"Sleeping";
+            break;
+        case 7:
+            self.activityImage.image = [UIImage imageNamed:@"walking.png"];
+            self.activityLabel.text = @"Walking";
+            break;
+        case 8:
+            self.activityImage.image = [UIImage imageNamed:@"worship.png"];
+            self.activityLabel.text = @"Worshiping";
+            break;
+            
+        default:
+            break;
+    }
+    
+
+    
 }
 
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"detail"]) {
+
+        id page2 = segue.destinationViewController;
+        [page2 setValue:self.friendid forKey:@"fid"];
+        
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
