@@ -77,15 +77,66 @@ function specific(data){
 			  var line = "";
 			  for (var i in d){
 				  
-					  if (flag == 0){
-						  debugger;
-						  $('#activitytimeline').append('<li><div class="timeline-badge"><i class="fa fa-check"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
-						  flag = 1;
+				  if (flag == 0){
+					  if (d[i]["activity"] == "eating"){
+					  $('#activitytimeline').append('<li><div class="timeline-badge"><i class="fa fa-cutlery" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
 					  }
-					  else{
-						  $('#activitytimeline').append('<li class="timeline-inverted"><div class="timeline-badge"><i class="fa fa-check"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
-						  flag = 0
+					  else if (d[i]["activity"] == "entertaining"){
+						  $('#activitytimeline').append('<li><div class="timeline-badge"><i class="fa fa-gamepad" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
 					  }
+					  else if (d[i]["activity"] == "in-transit"){
+						  $('#activitytimeline').append('<li><div class="timeline-badge"><i class="fa fa-car" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
+					  }
+					  else if (d[i]["activity"] == "running"){
+						  $('#activitytimeline').append('<li><div class="timeline-badge"><i class="fa fa-check" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
+					  }
+					  else if (d[i]["activity"] == "sleeping"){
+						  $('#activitytimeline').append('<li><div class="timeline-badge"><i class="fa fa-bed" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
+					  }
+					  else if (d[i]["activity"] == "walking"){
+						  $('#activitytimeline').append('<li><div class="timeline-badge"><i class="fa fa-paper-plane" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
+					  }
+					  else if (d[i]["activity"] == "working-studying"){
+						  $('#activitytimeline').append('<li><div class="timeline-badge"><i class="fa fa-graduation-cap" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
+					  }
+					  else if (d[i]["activity"] == "worshiping"){
+						  $('#activitytimeline').append('<li><div class="timeline-badge"><i class="fa fa-plus" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
+					  }
+					  else if (d[i]["activity"] == "shopping"){
+						  $('#activitytimeline').append('<li><div class="timeline-badge"><i class="fa fa-credit-card" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
+					  }
+					  flag = 1;
+				  }
+				  else{
+					  if (d[i]["activity"] == "eating"){
+						  $('#activitytimeline').append('<li class="timeline-inverted"><div class="timeline-badge"><i class="fa fa-cutlery" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
+						  }
+						  else if (d[i]["activity"] == "entertaining"){
+							  $('#activitytimeline').append('<li class="timeline-inverted"><div class="timeline-badge"><i class="fa fa-gamepad" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
+						  }
+						  else if (d[i]["activity"] == "in-transit"){
+							  $('#activitytimeline').append('<li class="timeline-inverted"><div class="timeline-badge"><i class="fa fa-car" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
+						  }
+						  else if (d[i]["activity"] == "running"){
+							  $('#activitytimeline').append('<li class="timeline-inverted"><div class="timeline-badge"><i class="fa fa-check" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
+						  }
+						  else if (d[i]["activity"] == "sleeping"){
+							  $('#activitytimeline').append('<li class="timeline-inverted"><div class="timeline-badge"><i class="fa fa-bed" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
+						  }
+						  else if (d[i]["activity"] == "walking"){
+							  $('#activitytimeline').append('<li class="timeline-inverted"><div class="timeline-badge"><i class="fa fa-paper-plane" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
+						  }
+						  else if (d[i]["activity"] == "working-studying"){
+							  $('#activitytimeline').append('<li class="timeline-inverted"><div class="timeline-badge"><i class="fa fa-graduation-cap" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
+						  }
+						  else if (d[i]["activity"] == "worshiping"){
+							  $('#activitytimeline').append('<li class="timeline-inverted"><div class="timeline-badge"><i class="fa fa-plus" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
+						  }
+						  else if (d[i]["activity"] == "shopping"){
+							  $('#activitytimeline').append('<li class="timeline-inverted"><div class="timeline-badge"><i class="fa fa-credit-card" style = "color:yellow"></i></div><div class="timeline-panel"><div class="timeline-heading"><h4 class="timeline-title">'+ d[i]["activity"] +'</h4><p><small class="text-muted"><i class="fa fa-clock-o"></i> '+ d[i]["timestamp"] +'</small></p></div></div></li>');
+						  }
+					  flag = 0
+				  }
 			  }
 		  }
 	  });
