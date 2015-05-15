@@ -10,7 +10,7 @@ public class Config {
   static final int geolocationMaxError = 200;
   static final float sleepBrightnessCut = (float) 0.2;
   static final long velocityMaxTimeInterval_mills = 60000;
-  static final float runningNormAccCut = (float) 0.5;
+  static final float runningNormAccCut = (float) 4.6;
   
   // Category of places
   static final String[] GooglePlaceEat = {"retaurant","bakery", "bar", "cafe","food"};
